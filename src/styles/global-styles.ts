@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { theme } from './theme';
 
 export const GlobalStyles = createGlobalStyle`
 
@@ -36,34 +35,6 @@ export const GlobalStyles = createGlobalStyle`
     font-weight: 800;
     margin: ${({ theme }) => theme.spacings.large} 0;
     color: ${({ theme }) => theme.colors.primary};
-
-  }
-
-  p {
-
-    margin: ${({ theme }) => theme.spacings.medium} 0;
-
-  }
-
-  ul, ol {
-
-    margin: ${({ theme }) => theme.spacings.medium};
-
-    padding: ${({ theme }) => theme.spacings.medium};
-
-  }
-
-  a {
-
-    color: ${({ theme }) => theme.colors.secondary};
-
-  }
-
-  .table {
-
-    width: 100%;
-
-    overflow-y: auto;
 
   }
 

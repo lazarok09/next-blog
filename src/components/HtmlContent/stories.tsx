@@ -1,18 +1,14 @@
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { HtmlContent, HtmlContentProps } from '.';
+import mock from './mock';
 
 export default {
   title: 'HtmlContent',
   component: HtmlContent,
   args: {
-    html: `Lorem ipsum dolor sit amet consectetur
-     adipisicing elit. Quasi sed nesciunt harum incidunt
-     architecto voluptate, eaque libero molestias,
-     minima tempore veritatis. Optio, nulla. Provident enim tenetur maxime es
-     t ex. Consequatur!`,
+    html: mock,
   },
 } as Meta;
-
 export const Template: Story<HtmlContentProps> = (args) => {
   return (
     <div>
