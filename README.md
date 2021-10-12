@@ -3,7 +3,7 @@
 </h1>
 
 <h1 align=center>
- Take a Coffe ☕
+ Take a Coffee ☕
 </h1>
 
 <span align=center>
