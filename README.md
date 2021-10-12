@@ -1,34 +1,68 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ⚠️ Em construção ⚠️
 
-## Getting Started
+## Sobre
+Esse projeto é um blog com API própria criada no Strapi. A criação dos componentes se dá principalmente no StoryBook, pois nos ajuda a criar componente individuais, com seus testes e estilos. Os testes são feitos com o Jest que ajudam bastante, podemos testar inclusive, implementações do styled componentes, ações de botões e etc.
 
-First, run the development server:
+### Commits
+Os commits seguem o [conventinal commits](https://www.conventionalcommits.org/en/v1.0.0/#specification) e são organizados por escopo de alteração. Você pode ler mais sobre no site oficial da documentação.
 
-```bash
-npm run dev
-# or
-yarn dev
+Além disso, estamos utilizando o Husky pra fazer varreduras no nosso código antes de cada commit, evitando o envio de alterações de código com erro. Você pode ler mais no [repositório oficial do husky](https://github.com/typicode/husky), ou nessa publicação [Aplicando Padrões de Código com Pré-Commit Hook usando Husky](https://oieduardorabelo.medium.com/aplicando-padr%C3%B5es-de-c%C3%B3digo-com-pr%C3%A9-commit-hook-usando-husky-a72a51512a6d)
+
+## Ambientes
+#### StoryBook
+Para rodar o ambiente do storybook você deverá digitar já dentro do projeto o comando. Após digitar o comando abaixo, será aberto no endereço http://localhost:3000 na sua máquina local a tela do StoryBook
+```
+npm run storybook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<span align=center>
+    
+## Imagem de demonstração de um componente react criado no storybook
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+</span>
 
-## Learn More
+<div align=center>
+    
+<img width=800rem src=".github/storybookgif.gif" alt="um gif demonstrando a estrutura do StoryBook e eu clicando num botão que mostra ou não o texto no compoennte" />
+    
+</div>
+    
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<hr>
 
-## Deploy on Vercel
+### Testes
+O nosso ambiente de testes pode ser acessado utilizando qualquer um dos três comandos listados abaixo.
+* O primeiro nos traz os testes de forma simples e mostrando se foram 100% testados.
+* O segundo coleta o coverage que é uma pasta onde fica armazenado detalhes de cada linha testada e se essa está evidamente testada.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run test --watchAll --silent
+```
+```
+npm run test -- --watchAll=false --coverage
+```
+<span align=center>
+    
+## Imagem de demonstração dos testes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+</span>
+
+<div align=center>
+    
+<img width=800rem src=".github/testes.png" alt="uma imagem que demonstra o teste de 6 componentes com 100% de linhas testadas" />
+    
+</div>
+
+
+<hr>
+<span align=center>
+    
+# < 👨‍💻 />
+    
+</span>
