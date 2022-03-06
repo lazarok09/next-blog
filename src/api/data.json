@@ -45,6 +45,16 @@
             "id": "6161cb7d78877f6f9c59add6",
             "displayName": "algoritmo",
             "slug": "algoritmo"
+          },
+          {
+            "id": "551252512251",
+            "displayName": "useEffect",
+            "slug": "useeffect"
+          },
+          {
+            "id": "6161cb7d78877211231231212f6f9c59add6",
+            "displayName": "js",
+            "slug": "js"
           }
         ],
         "author": {
