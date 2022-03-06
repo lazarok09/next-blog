@@ -60,7 +60,11 @@
         "excerpt": "Como utilizar o contextAPI do React, compartilhar dados na aplicação e mudar o estado de componentes.",
         "content": "<h2>O que é contextAPI</h2><p>A Context API é uma biblioteca que pode ser usada para autenticação, armazenamento de dados de formulários, configurações de temas ou outras funcionalidades que uma aplicação possa precisar.</p><p>&lt;h3&gt;Vantagens de utilizar a ContextAPI&lt;/h3&gt;</p><blockquote><p>Se props não queres mais usar, contextAPI aprenderá. - 2021, Lázaro Souza.</p></blockquote><p>Com uma citação dessa não dá pra resistir não é ? mas deixamos de brincadeiras, listarei agora as vantagens de se utilizar a contextAPI.</p><ol><li>Você tem uma arquitetura mais limpa</li><li>Abandona o uso de props por mais de dois componentes</li><li>Acessar dados em tempo de execução</li><li>Estado global pra toda aplicação sem necessidade de grandes aperreios com dhilrens e árvore de componentes</li></ol><figure class=\"image\"><img src=\"https://wallpaperaccess.com/full/3949076.jpg\" alt=\"React JS Wallpapers - Top Free React JS Backgrounds - WallpaperAccess\"><figcaption>Imagem do React</figcaption></figure><p>&lt;h1&gt;Código que peguei do Notion&lt;/h1&gt;</p><pre><code class=\"language-plaintext\">import React from 'react';\nimport ReactDOM from 'react-dom';\nimport './index.css';\nimport { Home } from './templates/Home';\nimport { CounterContextProvider } from './context/CounterContext/index';\n\nReactDOM.render(\n  &lt;React.StrictMode&gt;\n    &lt;CounterContextProvider&gt;\n      &lt;Home /&gt;\n    &lt;/CounterContextProvider&gt;\n  &lt;/React.StrictMode&gt;,\n  document.getElementById('root'),\n);</code></pre><p>&nbsp;</p>",
         "allowComments": true,
-        "cover": null,
+        "cover": {
+          "id": "412412451251231212",
+          "alternativeText": "",
+          "url": "https://res.cloudinary.com/lazarok09/image/upload/v1633798940/photo_1560415755_bd80d06eda60_ixid_Mnwx_Mj_A3f_DB_8_M_Hxwa_G90by1w_Y_Wdlf_Hx8f_G_Vuf_DB_8f_Hx8_and_ixlib_rb_1_2_f32360cc03.jpg"
+        },
         "categories": [
           {
             "id": "6161c61d78877f6f9c59adcc",
