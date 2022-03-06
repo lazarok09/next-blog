@@ -13,7 +13,7 @@ export default {
 
 export const Template: Story<PostTagsProps> = (args) => {
   return (
-    <div style={{ width: '50%' }}>
+    <div style={{ padding: '0 2.4rem' }}>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem ullam
         atque voluptas accusamus nulla consectetur blanditiis ducimus distinctio
@@ -21,6 +21,14 @@ export const Template: Story<PostTagsProps> = (args) => {
         vero, dolore quae voluptatem.
       </p>
       <PostTags {...args} />
+    </div>
+  );
+};
+export const NoTags: Story<PostTagsProps> = (args) => {
+  return (
+    <div style={{ padding: '0 2.4rem' }}>
+      <p>No Tags here</p>
+      <PostTags {...args} tags={undefined} />
     </div>
   );
 };
