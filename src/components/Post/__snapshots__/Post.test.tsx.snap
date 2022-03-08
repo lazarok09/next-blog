@@ -208,18 +208,6 @@ exports[`<Post /> should render 1`] = `
   }
 }
 
-@media (max-width:768px) {
-  .c0 {
-    padding: calc(3.2rem / 2);
-  }
-}
-
-@media (max-width:768px) {
-  .c7 {
-    padding: calc(3.2rem / 2);
-  }
-}
-
 <div>
   <article
     class=""
