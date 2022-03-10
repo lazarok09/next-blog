@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Author } from '../../shared-types/Author';
 import { Category } from '../../shared-types/category';
 import { formatDate } from '../../utils/formatDate';
@@ -20,7 +21,9 @@ export const ArticleMeta = ({
         {typeof author != 'undefined' && (
           <>
             <span>Por </span>
-            <a href={`/author/${author.slug}`}>{author.displayName}</a>
+            <Link href={`/author/${author.slug}`}>
+              <a>{author.displayName}</a>
+            </Link>
             <span className={'separetor'}> | </span>
           </>
         )}
@@ -33,9 +36,9 @@ export const ArticleMeta = ({
             <span className={'categories'}>
               {categories.map((category) => (
                 <span key={`article-meta-cat-${category.id}`}>
-                  <a href={`/category/${category.slug}`}>
-                    {category.displayName}
-                  </a>
+                  <Link href={`/category/${category.slug}`}>
+                    <a>{category.displayName}</a>
+                  </Link>
                 </span>
               ))}
             </span>

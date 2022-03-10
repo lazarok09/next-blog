@@ -14,6 +14,13 @@ export const Wrapper = styled.header`
     ${HeadingStyles} {
       margin: 0 0 calc(${theme.spacings.small} - 1rem);
     }
+    @media ${theme.media.lteSmall} {
+      flex-flow: column wrap;
+
+      & > ${HeadingStyles} {
+        margin: 0 0 calc(${theme.spacings.medium} - 1rem);
+      }
+    }
   `}
 `;
 export const Content = styled.div`
@@ -22,5 +29,8 @@ export const Content = styled.div`
     flex-flow: column wrap;
     margin-left: ${theme.spacings.large};
     max-width: 48rem;
+    @media ${theme.media.lteSmall} {
+      margin-left: 0;
+    }
   `}
 `;
