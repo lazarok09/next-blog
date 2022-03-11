@@ -16,7 +16,7 @@ export type LoadPostsVariables = {
 };
 
 export type StrapiPostAndSettings = {
-  settings: SettingsStrapi;
+  setting: SettingsStrapi;
   posts: PostStrapi[];
 };
 
