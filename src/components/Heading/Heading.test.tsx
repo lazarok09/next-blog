@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
+import { BlogThemeProvider } from '../../contexts/BlogThemeContext';
 import { Heading } from '.';
 import { renderTheme } from '../../styles/render-theme';
 import { theme } from '../../styles/theme';
@@ -37,26 +37,26 @@ describe('<Heading />', () => {
       'font-size': theme.font.sizes.medium,
     });
     rerender(
-      <ThemeProvider theme={theme}>
+      <BlogThemeProvider>
         <Heading size="big">texto</Heading>
-      </ThemeProvider>,
+      </BlogThemeProvider>,
     );
     expect(screen.getByRole('heading', { name: 'texto' })).toHaveStyle({
       'font-size': theme.font.sizes.xlarge,
     });
     rerender(
-      <ThemeProvider theme={theme}>
+      <BlogThemeProvider>
         <Heading size="medium">texto</Heading>
-      </ThemeProvider>,
+      </BlogThemeProvider>,
     );
 
     expect(screen.getByRole('heading', { name: 'texto' })).toHaveStyle({
       'font-size': theme.font.sizes.large,
     });
     rerender(
-      <ThemeProvider theme={theme}>
+      <BlogThemeProvider>
         <Heading size="huge">texto</Heading>
-      </ThemeProvider>,
+      </BlogThemeProvider>,
     );
 
     expect(screen.getByRole('heading', { name: 'texto' })).toHaveStyle({
