@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { theme } from '../../styles/theme';
 
@@ -25,29 +25,31 @@ export const BlogThemeProvider = ({ children }: BlogThemeProviderProps) => {
     setBlogTheme(newTheme);
   }, []);
 
-  const handleSetTheme: BlogThemeContextValues['setTheme'] = (
-    mode = 'default',
-  ) => {
-    if (mode === 'default') {
-      setBlogTheme(theme);
-      localStorage.setItem('theme', JSON.stringify(theme));
-    } else {
-      const newTheme = {
-        ...theme,
-        name: 'inverted',
-        colors: {
-          primary: '#FFFFFF',
-          darkText: '#F9F9F9',
-          secondary: '#dc143c',
-          white: '#000000',
-          mediumGray: '#F9F9F9',
-          darkerGray: '#CCCCCC',
-        },
-      };
-      setBlogTheme(newTheme);
-      localStorage.setItem('theme', JSON.stringify(newTheme));
-    }
-  };
+  const handleSetTheme: BlogThemeContextValues['setTheme'] = useCallback(
+    (mode = 'default') => {
+      if (mode === 'default') {
+        setBlogTheme(theme);
+        localStorage.setItem('theme', JSON.stringify(theme));
+      } else {
+        const newTheme = {
+          ...theme,
+          name: 'inverted',
+          colors: {
+            primary: '#FFFFFF',
+            darkText: '#F9F9F9',
+            secondary: '#dc143c',
+            white: '#000000',
+            mediumGray: '#F9F9F9',
+            darkerGray: '#CCCCCC',
+          },
+        };
+        setBlogTheme(newTheme);
+        localStorage.setItem('theme', JSON.stringify(newTheme));
+      }
+    },
+    [],
+  );
+
   return (
     <BlogThemeContext.Provider
       value={{ theme: blogTheme, setTheme: handleSetTheme }}
