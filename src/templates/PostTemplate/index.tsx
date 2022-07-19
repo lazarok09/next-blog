@@ -10,6 +10,8 @@ export type PostTemplateProps = {
   post?: PostStrapi;
 };
 export const PostTemplate = ({ settings, post }: PostTemplateProps) => {
+  if (!post) return null;
+
   return (
     <BaseTemplate settings={settings}>
       <Post {...post} />
