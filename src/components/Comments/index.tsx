@@ -1,5 +1,6 @@
 import * as Styled from "./styles";
 import { DiscussionEmbed } from "disqus-react";
+import config from "../../config";
 export type CommentsProps = {
   id: string;
   slug: string;
@@ -13,7 +14,7 @@ export const Comments = ({ title, allowComments, slug, id }: CommentsProps) => {
   return (
     <Styled.Wrapper>
       <DiscussionEmbed
-        shortname="blog-breve-explicacao"
+        shortname={`${config.url}/post/${slug}`}
         config={{
           url: `/post/${slug}`,
           identifier: id,
