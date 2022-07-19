@@ -1,11 +1,7 @@
 import * as Styled from "./styles";
 
 import { useState } from "react";
-import {
-  defaultLoadPostsVariables,
-  loadPosts,
-  LoadPostsVariables,
-} from "../../api/load-posts";
+import { loadPosts, LoadPostsVariables } from "../../api/load-posts";
 import PostGrid from "../../components/PostGrid";
 import { PostStrapi } from "../../shared-types/post-strapi";
 import { SettingsStrapi } from "../../shared-types/settings-strapi";
@@ -22,29 +18,25 @@ export const PostsTemplate = ({
   variables,
 }: PostsTemplateProps) => {
   const [statePosts, setStatePosts] = useState(posts);
-  const [stateVariables, setStateVariables] = useState(
-    variables ?? defaultLoadPostsVariables
-  );
+  const [stateVariables, setStateVariables] = useState(variables);
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [noMorePosts, setNoMorePosts] = useState(false);
 
   const handleLoadMorePosts = async () => {
     setButtonDisabled(true);
-    if (stateVariables.start && stateVariables.limit) {
-      const newVariables = {
-        ...stateVariables,
-        start: stateVariables.start + stateVariables.limit,
-        Tlimit: stateVariables.limit,
-      };
-      const morePosts = await loadPosts(newVariables);
-      if (!morePosts || !morePosts.posts || !morePosts.posts.length) {
-        setNoMorePosts(true);
-        return;
-      }
-      setButtonDisabled(true);
-      setStateVariables(newVariables);
-      setStatePosts((p) => [...p, ...morePosts.posts]);
+    const newVariables = {
+      ...stateVariables,
+      start: stateVariables.start + stateVariables.limit,
+      Tlimit: stateVariables.limit,
+    };
+    const morePosts = await loadPosts(newVariables);
+    if (!morePosts || !morePosts.posts || !morePosts.posts.length) {
+      setNoMorePosts(true);
+      return;
     }
+    setButtonDisabled(true);
+    setStateVariables(newVariables);
+    setStatePosts((p) => [...p, ...morePosts.posts]);
   };
 
   return (
