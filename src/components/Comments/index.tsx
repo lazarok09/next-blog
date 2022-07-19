@@ -10,17 +10,17 @@ export type CommentsProps = {
 
 export const Comments = ({ title, allowComments, slug, id }: CommentsProps) => {
   if (!allowComments) return null;
-
+  const dsConfig = {
+    url: `${config.url}/post/${slug}/`,
+    identifier: id,
+    title: title,
+    language: "pt_BR",
+  };
   return (
     <Styled.Wrapper>
       <DiscussionEmbed
-        shortname={`${config.url}/post/${slug}`}
-        config={{
-          url: `/post/${slug}`,
-          identifier: id,
-          title: title,
-          language: "pt_BR",
-        }}
+        shortname={`"blog-breve-explicacao"`}
+        config={dsConfig}
       />
     </Styled.Wrapper>
   );
