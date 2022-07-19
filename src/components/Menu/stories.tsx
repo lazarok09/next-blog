@@ -1,20 +1,20 @@
-import { Menu, MenuProps } from '.';
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Menu, MenuProps } from ".";
+import { Meta, Story } from "@storybook/react/types-6-0";
 
-import mock from './mock';
+import mock from "./mock";
 
 export default {
-  title: 'Menu',
+  title: "Menu",
   component: Menu,
   args: mock,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta<MenuProps>;
 
 export const Template: Story<MenuProps> = (args) => {
   return (
-    <div style={{ maxWidth: '60rem', margin: '5rem auto', padding: '3.2rem' }}>
+    <div style={{ maxWidth: "60rem", margin: "5rem auto", padding: "3.2rem" }}>
       <Menu {...args} />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu purus

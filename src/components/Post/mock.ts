@@ -1,5 +1,5 @@
-import { PostProps } from '.';
-import { data } from '../../api/data.json';
+import { PostProps } from ".";
+import { data } from "../../api/data.json";
 
 const { title, excerpt, cover, content, author, categories, createdAt } =
   data.posts[0];

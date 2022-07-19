@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const ButtonContainer = styled.div`
   ${({ theme }) => css`
@@ -21,4 +21,3 @@ export const Button = styled.button`
     }
   `}
 `;
-

@@ -8,11 +8,11 @@ exports[`<ArticleMeta /> should match snapshot 1`] = `
 }
 
 .c0 .categories span::after {
-  content: ', ';
+  content: ", ";
 }
 
 .c0 .categories span:last-child::after {
-  content: '';
+  content: "";
 }
 
 .c0 a {
@@ -87,11 +87,11 @@ exports[`<ArticleMeta /> should match snapshot with out categories and author 1`
 }
 
 .c0 .categories span::after {
-  content: ', ';
+  content: ", ";
 }
 
 .c0 .categories span:last-child::after {
-  content: '';
+  content: "";
 }
 
 .c0 a {

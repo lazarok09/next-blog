@@ -8,11 +8,11 @@ exports[`<ArticleHeader /> should render heading, excerpt, cover img and meta 1`
 }
 
 .c5 .categories span::after {
-  content: ', ';
+  content: ", ";
 }
 
 .c5 .categories span:last-child::after {
-  content: '';
+  content: "";
 }
 
 .c5 a {

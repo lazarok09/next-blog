@@ -8,11 +8,11 @@ exports[`<Post /> should render 1`] = `
 }
 
 .c6 .categories span::after {
-  content: ', ';
+  content: ", ";
 }
 
 .c6 .categories span:last-child::after {
-  content: '';
+  content: "";
 }
 
 .c6 a {

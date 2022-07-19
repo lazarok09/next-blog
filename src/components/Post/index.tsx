@@ -1,7 +1,7 @@
-import { ArticleHeader, ArticleHeaderProps } from '../ArticleHeader';
-import { HtmlContent } from '../HtmlContent';
-import { PostContainer } from '../PostContainer';
-import * as Styled from './styles';
+import { ArticleHeader, ArticleHeaderProps } from "../ArticleHeader";
+import { HtmlContent } from "../HtmlContent";
+import { PostContainer } from "../PostContainer";
+import * as Styled from "./styles";
 
 export type PostProps = ArticleHeaderProps & {
   content: string;

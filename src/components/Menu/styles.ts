@@ -1,27 +1,27 @@
-import styled, { css, DefaultTheme } from 'styled-components';
-import { Title as HeadingStyles } from '../Heading/styles';
+import styled, { css, DefaultTheme } from "styled-components";
+import { Title as HeadingStyles } from "../Heading/styles";
 type MenuBehaviorProps = { menuVisible: boolean };
 
 const wrapperChanger = (
-  menuVisible: MenuBehaviorProps['menuVisible'],
-  theme: DefaultTheme,
+  menuVisible: MenuBehaviorProps["menuVisible"],
+  theme: DefaultTheme
 ) => css`
-  left: ${menuVisible ? '0' : '-31rem'};
-  overflow-y: ${menuVisible ? 'auto' : 'hidden'};
+  left: ${menuVisible ? "0" : "-31rem"};
+  overflow-y: ${menuVisible ? "auto" : "hidden"};
 
   @media ${theme.media.lteMedium} {
-    left: ${menuVisible ? '0' : '-32rem'};
+    left: ${menuVisible ? "0" : "-32rem"};
   }
 `;
 const buttonChanger = (
-  menuVisible: MenuBehaviorProps['menuVisible'],
-  theme: DefaultTheme,
+  menuVisible: MenuBehaviorProps["menuVisible"],
+  theme: DefaultTheme
 ) => css`
-  left: ${menuVisible ? '26rem' : '1rem'};
+  left: ${menuVisible ? "26rem" : "1rem"};
   color: ${menuVisible ? theme.colors.secondary : theme.colors.white};
 
   @media ${theme.media.lteMedium} {
-    left: ${menuVisible ? '26rem' : '-0.5rem'};
+    left: ${menuVisible ? "26rem" : "-0.5rem"};
   }
 `;
 export const Wrapper = styled.div<MenuBehaviorProps>`

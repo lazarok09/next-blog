@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { Title as HeadingStyles } from '../Heading/styles';
+import styled, { css } from "styled-components";
+import { Title as HeadingStyles } from "../Heading/styles";
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     ${HeadingStyles} {

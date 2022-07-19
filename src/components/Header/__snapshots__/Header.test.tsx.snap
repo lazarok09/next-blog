@@ -72,6 +72,24 @@ exports[`<Header /> should match snapshot 1`] = `
   max-width: 48rem;
 }
 
+@media (max-width:360px) {
+  .c0 {
+    -webkit-flex-flow: column wrap;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+  }
+
+  .c0 > .c1 {
+    margin: 0 0 calc(2.4rem - 1rem);
+  }
+}
+
+@media (max-width:360px) {
+  .c4 {
+    margin-left: 0;
+  }
+}
+
 <div>
   <header
     class="c0"

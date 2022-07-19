@@ -1,10 +1,10 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Post, PostProps } from '.';
+import { Meta, Story } from "@storybook/react/types-6-0";
+import { Post, PostProps } from ".";
 
-import mock from './mock';
+import mock from "./mock";
 
 export default {
-  title: 'Post',
+  title: "Post",
   component: Post,
   args: mock,
 } as Meta<PostProps>;

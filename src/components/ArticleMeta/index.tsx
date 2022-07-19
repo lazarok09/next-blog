@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { Author } from '../../shared-types/Author';
-import { Category } from '../../shared-types/category';
-import { formatDate } from '../../utils/formatDate';
-import * as Styled from './styles';
+import Link from "next/link";
+import { Author } from "../../shared-types/Author";
+import { Category } from "../../shared-types/category";
+import { formatDate } from "../../utils/formatDate";
+import * as Styled from "./styles";
 
 export type ArticleMetaProps = {
   createdAt: string;
@@ -18,22 +18,22 @@ export const ArticleMeta = ({
   return (
     <Styled.Wrapper>
       <p>
-        {typeof author != 'undefined' && author && (
+        {typeof author != "undefined" && author && (
           <>
             <span>Por </span>
             <Link href={`/author/${author.slug}`}>
               <a>{author.displayName}</a>
             </Link>
-            <span className={'separetor'}> | </span>
+            <span className={"separetor"}> | </span>
           </>
         )}
 
         <time dateTime={createdAt}>{formatDate(createdAt)}</time>
         {!!categories && categories.length > 0 && (
           <>
-            <span className={'separetor'}> | </span>
+            <span className={"separetor"}> | </span>
 
-            <span className={'categories'}>
+            <span className={"categories"}>
               {categories.map((category) => (
                 <span key={`article-meta-cat-${category.id}`}>
                   <Link href={`/category/${category.slug}`}>

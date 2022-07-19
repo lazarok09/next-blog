@@ -1,14 +1,14 @@
-import { PostsTemplate, PostsTemplateProps } from '.';
-import { Meta, Story } from '@storybook/react/types-6-0';
-import mock from './mock';
+import { PostsTemplate, PostsTemplateProps } from ".";
+import { Meta, Story } from "@storybook/react/types-6-0";
+import mock from "./mock";
 export default {
-  title: 'PostsTemplate',
+  title: "PostsTemplate",
   component: PostsTemplate,
   args: mock,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     backgrounds: {
-      default: '',
+      default: "",
     },
   },
 } as Meta<PostsTemplateProps>;

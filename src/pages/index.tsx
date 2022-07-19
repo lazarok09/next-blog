@@ -1,11 +1,11 @@
-import Head from 'next/head';
-import { GetStaticProps } from 'next';
+import Head from "next/head";
+import { GetStaticProps } from "next";
 import {
   defaultLoadPostsVariables,
   loadPosts,
   StrapiPostAndSettings,
-} from '../api/load-posts';
-import { PostsTemplate } from '../templates/PostsTemplate';
+} from "../api/load-posts";
+import { PostsTemplate } from "../templates/PostsTemplate";
 
 export default function Index({
   posts,
@@ -24,30 +24,31 @@ export default function Index({
     </>
   );
 }
-export const getStaticProps: GetStaticProps<StrapiPostAndSettings> =
-  async () => {
-    let data = null;
+export const getStaticProps: GetStaticProps<
+  StrapiPostAndSettings
+> = async () => {
+  let data = null;
 
-    try {
-      data = await loadPosts();
-    } catch (e) {
-      data = null;
-    }
+  try {
+    data = await loadPosts();
+  } catch (e) {
+    data = null;
+  }
 
-    if (!data || !data.posts || !data.posts.length) {
-      return {
-        notFound: true,
-      };
-    }
-
+  if (!data || !data.posts || !data.posts.length) {
     return {
-      props: {
-        posts: data.posts,
-        setting: data.setting,
-        variables: {
-          ...defaultLoadPostsVariables,
-        },
-      },
-      revalidate: 24 * 60 * 60,
+      notFound: true,
     };
+  }
+
+  return {
+    props: {
+      posts: data.posts,
+      setting: data.setting,
+      variables: {
+        ...defaultLoadPostsVariables,
+      },
+    },
+    revalidate: 24 * 60 * 60,
   };
+};

@@ -1,5 +1,5 @@
-import { data } from '../../api/data.json';
-import { PostsTemplateProps } from '.';
+import { data } from "../../api/data.json";
+import { PostsTemplateProps } from ".";
 
 export default {
   settings: data.setting,

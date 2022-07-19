@@ -1,20 +1,20 @@
-import { MenuLink, MenuLinkProps } from '.';
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { theme } from '../../styles/theme';
+import { MenuLink, MenuLinkProps } from ".";
+import { Meta, Story } from "@storybook/react/types-6-0";
+import { theme } from "../../styles/theme";
 
 export default {
-  title: 'MenuLink',
+  title: "MenuLink",
   component: MenuLink,
   args: {
-    children: 'MenuLink',
-    link: 'https://www.google.com.br/',
+    children: "MenuLink",
+    link: "https://www.google.com.br/",
   },
   argTypes: {
-    children: { type: 'string' },
+    children: { type: "string" },
   },
   parameters: {
     backgrounds: {
-      default: 'light',
+      default: "light",
     },
   },
 } as Meta;
@@ -23,7 +23,7 @@ export const Template: Story<MenuLinkProps> = (args) => {
   return (
     <div
       style={{
-        maxWidth: '320px',
+        maxWidth: "320px",
         background: theme.colors.primary,
         padding: theme.spacings.large,
       }}

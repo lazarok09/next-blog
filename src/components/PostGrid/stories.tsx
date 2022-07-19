@@ -1,12 +1,12 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import PostGrid, { PostGridProps } from '.';
-import mock from './mock';
+import { Meta, Story } from "@storybook/react/types-6-0";
+import PostGrid, { PostGridProps } from ".";
+import mock from "./mock";
 export default {
-  title: 'PostGrid',
+  title: "PostGrid",
   component: PostGrid,
   args: mock,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta<PostGridProps>;
 

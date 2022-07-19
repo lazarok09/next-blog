@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.p`
   ${({ theme }) => css`
@@ -8,13 +8,13 @@ export const Wrapper = styled.p`
       margin: 0 0 0 0.5rem;
     }
     span::before {
-      content: ' ';
+      content: " ";
     }
     span::after {
-      content: ', ';
+      content: ", ";
     }
     span:last-child::after {
-      content: '';
+      content: "";
     }
     a {
       color: ${theme.colors.secondary};

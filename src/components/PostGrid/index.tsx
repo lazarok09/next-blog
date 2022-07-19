@@ -1,6 +1,6 @@
-import React from 'react';
-import PostCard, { PostCardProps } from '../PostCard';
-import * as Styled from './styles';
+import React from "react";
+import PostCard, { PostCardProps } from "../PostCard";
+import * as Styled from "./styles";
 
 export type PostGridProps = {
   posts?: PostCardProps[];

@@ -1,6 +1,6 @@
-import * as Styled from './styles';
-import { Heading } from '../Heading/index';
-import Link from 'next/link';
+import * as Styled from "./styles";
+import { Heading } from "../Heading/index";
+import Link from "next/link";
 
 export type LogoLinkProps = {
   text: string;
@@ -11,12 +11,12 @@ export type LogoLinkProps = {
 
 export const LogoLink = ({
   text,
-  srcImage = '',
+  srcImage = "",
   link,
   newTab = false,
 }: LogoLinkProps) => {
   const nextLink = link.match(/^\//) ? true : false;
-  const target = newTab ? '_blank' : '_self';
+  const target = newTab ? "_blank" : "_self";
 
   if (nextLink) {
     return (

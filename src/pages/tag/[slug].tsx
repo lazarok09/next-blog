@@ -1,12 +1,12 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 import {
   defaultLoadPostsVariables,
   loadPosts,
   StrapiPostAndSettings,
-} from '../../api/load-posts';
-import PostsTemplate from '../../templates/PostsTemplate';
+} from "../../api/load-posts";
+import PostsTemplate from "../../templates/PostsTemplate";
 
 export default function TagPage({
   posts,
@@ -43,10 +43,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 export const getStaticProps: GetStaticProps<StrapiPostAndSettings> = async (
-  ctx,
+  ctx
 ) => {
   let data = null;
-  const variables = { tagSlug: ctx.params.slug as string };
+  const variables = { tagSlug: ctx?.params?.slug as string };
   try {
     data = await loadPosts(variables);
   } catch (e) {

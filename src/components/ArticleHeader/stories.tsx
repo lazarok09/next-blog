@@ -1,8 +1,8 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import ArticleHeader, { ArticleHeaderProps } from '.';
-import mock from './mock';
+import { Meta, Story } from "@storybook/react/types-6-0";
+import ArticleHeader, { ArticleHeaderProps } from ".";
+import mock from "./mock";
 export default {
-  title: 'ArticleHeader',
+  title: "ArticleHeader",
   component: ArticleHeader,
   args: mock,
 } as Meta<ArticleHeaderProps>;

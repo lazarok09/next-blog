@@ -1,9 +1,9 @@
-import { Menu as MenuIcon } from '@styled-icons/material-outlined/Menu';
-import React, { useState } from 'react';
-import { LogoLink } from '../LogoLink';
-import { Close as CloseIcon } from '@styled-icons/material-outlined/Close';
-import { MenuLink } from '../MenuLink';
-import * as Styled from './styles';
+import { Menu as MenuIcon } from "@styled-icons/material-outlined/Menu";
+import React, { useState } from "react";
+import { LogoLink } from "../LogoLink";
+import { Close as CloseIcon } from "@styled-icons/material-outlined/Close";
+import { MenuLink } from "../MenuLink";
+import * as Styled from "./styles";
 
 export type MenuPropsLinks = {
   id: string;

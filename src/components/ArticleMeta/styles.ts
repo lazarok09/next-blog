@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -6,10 +6,10 @@ export const Wrapper = styled.div`
     color: ${theme.colors.darkerGray};
     font-style: italic;
     .categories span::after {
-      content: ', ';
+      content: ", ";
     }
     .categories span:last-child::after {
-      content: '';
+      content: "";
     }
 
     a {

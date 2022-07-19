@@ -1,6 +1,6 @@
-import styled, { css, DefaultTheme } from 'styled-components';
+import styled, { css, DefaultTheme } from "styled-components";
 export type PostContainerProps = {
-  size: 'max' | 'content';
+  size: "max" | "content";
 };
 const PostContainerStyles = {
   max: (theme: DefaultTheme) => css`

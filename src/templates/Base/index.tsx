@@ -1,11 +1,11 @@
-import { useRouter } from 'next/dist/client/router';
-import { Footer } from '../../components/Footer';
-import { GoToTop } from '../../components/GoToTop';
-import { Header } from '../../components/Header';
-import { Menu } from '../../components/Menu';
-import { ToggleTheme } from '../../components/ToggleTheme';
-import { SettingsStrapi } from '../../shared-types/settings-strapi';
-import * as Styled from './styles';
+import { useRouter } from "next/dist/client/router";
+import { Footer } from "../../components/Footer";
+import { GoToTop } from "../../components/GoToTop";
+import { Header } from "../../components/Header";
+import { Menu } from "../../components/Menu";
+import { ToggleTheme } from "../../components/ToggleTheme";
+import { SettingsStrapi } from "../../shared-types/settings-strapi";
+import * as Styled from "./styles";
 
 export type BaseTemplateProps = {
   settings: SettingsStrapi;
@@ -35,7 +35,7 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
             type="search"
             placeholder="Encontre posts"
             name="q"
-            defaultValue={router?.query?.q || ''}
+            defaultValue={router?.query?.q || ""}
           />
         </form>
       </Styled.SearchContainer>

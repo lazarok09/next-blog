@@ -1,12 +1,12 @@
-import { GetServerSideProps } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import Head from 'next/head';
+import { GetServerSideProps } from "next";
+import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 import {
   defaultLoadPostsVariables,
   loadPosts,
   StrapiPostAndSettings,
-} from '../../api/load-posts';
-import PostsTemplate from '../../templates/PostsTemplate';
+} from "../../api/load-posts";
+import PostsTemplate from "../../templates/PostsTemplate";
 
 export default function SearchPage({
   posts,
@@ -28,36 +28,37 @@ export default function SearchPage({
   );
 }
 
-export const getServerSideProps: GetServerSideProps<StrapiPostAndSettings> =
-  async (ctx) => {
-    let data = null;
-    const query = ctx.query.q ?? '';
-    const variables = { postSearch: query as string }; // postSearch is a graphQL abstraction
+export const getServerSideProps: GetServerSideProps<
+  StrapiPostAndSettings
+> = async (ctx) => {
+  let data = null;
+  const query = ctx.query.q ?? "";
+  const variables = { postSearch: query as string }; // postSearch is a graphQL abstraction
 
-    if (!query) {
-      return {
-        notFound: true,
-      };
-    }
-
-    try {
-      data = await loadPosts(variables);
-    } catch (e) {
-      data = null;
-    }
-
-    if (!data || !data.posts) {
-      return {
-        notFound: true,
-      };
-    }
-
+  if (!query) {
     return {
-      props: {
-        posts: data.posts,
-        setting: data.setting,
-        ...defaultLoadPostsVariables,
-        ...variables,
-      },
+      notFound: true,
     };
+  }
+
+  try {
+    data = await loadPosts(variables);
+  } catch (e) {
+    data = null;
+  }
+
+  if (!data || !data.posts) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      posts: data.posts,
+      setting: data.setting,
+      ...defaultLoadPostsVariables,
+      ...variables,
+    },
   };
+};

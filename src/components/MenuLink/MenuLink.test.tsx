@@ -1,42 +1,42 @@
-import { screen } from '@testing-library/react';
-import { renderTheme } from '../../styles/render-theme';
-import { MenuLink } from '.';
+import { screen } from "@testing-library/react";
+import { renderTheme } from "../../styles/render-theme";
+import { MenuLink } from ".";
 
-describe('<MenuLink />', () => {
-  it('should render a link', () => {
+describe("<MenuLink />", () => {
+  it("should render a link", () => {
     renderTheme(<MenuLink link="http://localhost">Children</MenuLink>);
-    expect(screen.getByRole('link', { name: 'Children' })).toHaveAttribute(
-      'target',
-      '_self',
+    expect(screen.getByRole("link", { name: "Children" })).toHaveAttribute(
+      "target",
+      "_self"
     );
   });
-  it('should render in a new tab', () => {
+  it("should render in a new tab", () => {
     renderTheme(
       <MenuLink link="http://localhost" newTab={true}>
         Children
-      </MenuLink>,
+      </MenuLink>
     );
-    expect(screen.getByRole('link', { name: 'Children' })).toHaveAttribute(
-      'target',
-      '_blank',
+    expect(screen.getByRole("link", { name: "Children" })).toHaveAttribute(
+      "target",
+      "_blank"
     );
   });
-  it('should render menu link with a internal link', () => {
+  it("should render menu link with a internal link", () => {
     renderTheme(
       <MenuLink link="/target" newTab={true}>
         Children
-      </MenuLink>,
+      </MenuLink>
     );
-    expect(screen.getByRole('link', { name: 'Children' })).toHaveAttribute(
-      'href',
-      '/target',
+    expect(screen.getByRole("link", { name: "Children" })).toHaveAttribute(
+      "href",
+      "/target"
     );
   });
-  it('should match inline snapshot', () => {
+  it("should match inline snapshot", () => {
     const { container } = renderTheme(
       <MenuLink link="http://localhost" newTab={false}>
         Children
-      </MenuLink>,
+      </MenuLink>
     );
     expect(container.firstChild).toMatchInlineSnapshot(`
       .c0 {

@@ -1,14 +1,14 @@
-import { screen } from '@testing-library/react';
-import { renderTheme } from '../../styles/render-theme';
-import { GoToTop } from '.';
+import { screen } from "@testing-library/react";
+import { renderTheme } from "../../styles/render-theme";
+import { GoToTop } from ".";
 
-describe('<GoToTop />', () => {
-  it('should render Go to Top button', () => {
+describe("<GoToTop />", () => {
+  it("should render Go to Top button", () => {
     const { container } = renderTheme(<GoToTop />);
-    expect(screen.getByRole('link', { name: 'Go to Top' })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Go to Top' })).toHaveAttribute(
-      'href',
-      '#',
+    expect(screen.getByRole("link", { name: "Go to Top" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Go to Top" })).toHaveAttribute(
+      "href",
+      "#"
     );
     expect(container).toMatchInlineSnapshot(`
       .c0 {

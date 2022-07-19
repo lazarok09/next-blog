@@ -1,18 +1,18 @@
-import { Meta, Story } from '@storybook/react/types-6-0';
-import { Heading, HeadingProps } from '.';
+import { Meta, Story } from "@storybook/react/types-6-0";
+import { Heading, HeadingProps } from ".";
 
 export default {
-  title: 'Heading',
+  title: "Heading",
   component: Heading,
   args: {
-    children: 'O texto está escuro',
+    children: "O texto está escuro",
   },
   argTypes: {
-    children: { type: 'string' },
+    children: { type: "string" },
   },
   parameters: {
     backgrounds: {
-      default: 'dark',
+      default: "dark",
     },
   },
 } as Meta;
@@ -22,11 +22,11 @@ export const Dark: Story<HeadingProps> = (args) => <Heading {...args} />;
 
 Light.parameters = {
   backgrounds: {
-    default: 'light',
+    default: "light",
   },
 };
 
 Dark.args = {
-  children: 'O texto está claro',
+  children: "O texto está claro",
   colorDark: false,
 };

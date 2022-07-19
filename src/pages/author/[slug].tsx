@@ -1,12 +1,12 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 import {
   defaultLoadPostsVariables,
   loadPosts,
   StrapiPostAndSettings,
-} from '../../api/load-posts';
-import PostsTemplate from '../../templates/PostsTemplate';
+} from "../../api/load-posts";
+import PostsTemplate from "../../templates/PostsTemplate";
 
 export default function AuthorPage({
   posts,
@@ -23,7 +23,7 @@ export default function AuthorPage({
     <>
       <Head>
         <title>
-          Author {posts[0].author.displayName} - {setting.blogName}
+          Author {post.author?.displayName ?? ""} - {setting.blogName}
         </title>
         <meta name="description" content={setting.blogDescription} />
       </Head>
@@ -39,12 +39,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 export const getStaticProps: GetStaticProps<StrapiPostAndSettings> = async (
-  ctx,
+  ctx
 ) => {
   let data = null;
-  const variables = { authorSlug: ctx.params.slug as string };
+  const variables = { authorSlug: ctx?.params?.slug as string };
   try {
-    data = await loadPosts({ authorSlug: ctx.params.slug as string });
+    data = await loadPosts({ authorSlug: ctx?.params?.slug as string });
   } catch (e) {
     data = null;
   }

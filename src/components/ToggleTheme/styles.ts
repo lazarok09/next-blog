@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   position: fixed;
@@ -50,7 +50,7 @@ export const Slider = styled.span`
     border-radius: 2rem;
     box-shadow: 0 0 1px ${theme.colors.primary};
     &:before {
-      content: '';
+      content: "";
       position: absolute;
       height: 2.1rem;
       width: 2.1rem;
@@ -62,4 +62,3 @@ export const Slider = styled.span`
     }
   `}
 `;
-

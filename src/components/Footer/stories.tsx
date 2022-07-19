@@ -1,7 +1,7 @@
-import { Footer, FooterProps } from '.';
-import { Meta, Story } from '@storybook/react/types-6-0';
+import { Footer, FooterProps } from ".";
+import { Meta, Story } from "@storybook/react/types-6-0";
 export default {
-  title: 'Footer',
+  title: "Footer",
   component: Footer,
   args: {
     footerHtml: `<p><a href="https://www.linkedin.com/in/lazarok09/">Feito com ❤ por Lázaro Souza</a></p>`,
@@ -10,7 +10,7 @@ export default {
 
 export const Template: Story<FooterProps> = (args) => {
   return (
-    <div style={{ marginTop: '200px' }}>
+    <div style={{ marginTop: "200px" }}>
       <Footer {...args} />
     </div>
   );

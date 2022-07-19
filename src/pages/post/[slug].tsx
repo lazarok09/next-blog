@@ -1,8 +1,8 @@
-import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/dist/client/router';
-import Head from 'next/head';
-import { loadPosts, StrapiPostAndSettings } from '../../api/load-posts';
-import PostTemplate from '../../templates/PostTemplate';
+import { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
+import { loadPosts, StrapiPostAndSettings } from "../../api/load-posts";
+import PostTemplate from "../../templates/PostTemplate";
 
 export default function PostPage({ posts, setting }: StrapiPostAndSettings) {
   const router = useRouter();
@@ -47,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 export const getStaticProps: GetStaticProps<StrapiPostAndSettings> = async (
-  ctx,
+  ctx
 ) => {
   let data = null;
 

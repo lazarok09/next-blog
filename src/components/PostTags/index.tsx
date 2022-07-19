@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { PostTag } from '../../shared-types/Tags';
-import * as Styled from './styles';
+import Link from "next/link";
+import { PostTag } from "../../shared-types/Tags";
+import * as Styled from "./styles";
 
 export type PostTagsProps = {
   tags?: PostTag[];

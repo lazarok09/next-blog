@@ -1,19 +1,19 @@
-import { PostTags, PostTagsProps } from '.';
-import { Story, Meta } from '@storybook/react/types-6-0';
-import mock from './mock';
+import { PostTags, PostTagsProps } from ".";
+import { Story, Meta } from "@storybook/react/types-6-0";
+import mock from "./mock";
 
 export default {
-  title: 'PostTags',
+  title: "PostTags",
   component: PostTags,
   args: mock,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } as Meta<PostTagsProps>;
 
 export const Template: Story<PostTagsProps> = (args) => {
   return (
-    <div style={{ padding: '0 2.4rem' }}>
+    <div style={{ padding: "0 2.4rem" }}>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem ullam
         atque voluptas accusamus nulla consectetur blanditiis ducimus distinctio
@@ -26,7 +26,7 @@ export const Template: Story<PostTagsProps> = (args) => {
 };
 export const NoTags: Story<PostTagsProps> = (args) => {
   return (
-    <div style={{ padding: '0 2.4rem' }}>
+    <div style={{ padding: "0 2.4rem" }}>
       <p>No Tags here</p>
       <PostTags {...args} tags={undefined} />
     </div>

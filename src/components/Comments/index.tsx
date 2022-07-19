@@ -1,5 +1,5 @@
-import * as Styled from './styles';
-import { DiscussionEmbed } from 'disqus-react';
+import * as Styled from "./styles";
+import { DiscussionEmbed } from "disqus-react";
 export type CommentsProps = {
   id: string;
   slug: string;
@@ -18,10 +18,9 @@ export const Comments = ({ title, allowComments, slug, id }: CommentsProps) => {
           url: `/post/${slug}`,
           identifier: id,
           title: title,
-          language: 'pt_BR',
+          language: "pt_BR",
         }}
       />
     </Styled.Wrapper>
   );
 };
-

@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { Title as HeadingStyles } from '../../components/Heading/styles';
+import styled, { css } from "styled-components";
+import { Title as HeadingStyles } from "../../components/Heading/styles";
 export const Wrapper = styled.header`
   ${({ theme }) => css`
     display: flex;

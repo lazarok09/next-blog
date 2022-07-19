@@ -1,4 +1,4 @@
-import * as Styled from './styles';
+import * as Styled from "./styles";
 
 export type HtmlContentProps = {
   html: string;

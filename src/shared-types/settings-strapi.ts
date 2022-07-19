@@ -1,5 +1,5 @@
-import { MenuPropsLinks } from '../components/Menu';
-import { StrapiImage } from './StrapiImage';
+import { MenuPropsLinks } from "../components/Menu";
+import { StrapiImage } from "./StrapiImage";
 
 export type SettingsStrapi = {
   id: string;

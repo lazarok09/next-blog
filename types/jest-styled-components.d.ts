@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Plugin, NewPlugin } from 'pretty-format';
+import { Plugin, NewPlugin } from "pretty-format";
 
 declare global {
   namespace jest {

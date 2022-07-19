@@ -1,19 +1,19 @@
-import { GlobalStyles } from '../src/styles/global-styles';
+import { GlobalStyles } from "../src/styles/global-styles";
 
-import { BlogThemeProvider } from '../src/contexts/BlogThemeContext';
-import { theme } from '../src/styles/theme';
+import { BlogThemeProvider } from "../src/contexts/BlogThemeContext";
+import { theme } from "../src/styles/theme";
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  actions: { argTypesRegex: "^on[A-Z].*" },
   backgrounds: {
-    default: 'light',
+    default: "light",
     values: [
       {
-        name: 'light',
+        name: "light",
         value: theme.colors.white,
       },
       {
-        name: 'dark',
+        name: "dark",
         value: theme.colors.primary,
       },
     ],

@@ -1,11 +1,15 @@
-import * as Styled from './styles';
+import * as Styled from "./styles";
 
-import { useState } from 'react';
-import { loadPosts, LoadPostsVariables } from '../../api/load-posts';
-import PostGrid from '../../components/PostGrid';
-import { PostStrapi } from '../../shared-types/post-strapi';
-import { SettingsStrapi } from '../../shared-types/settings-strapi';
-import { BaseTemplate } from '../Base';
+import { useState } from "react";
+import {
+  defaultLoadPostsVariables,
+  loadPosts,
+  LoadPostsVariables,
+} from "../../api/load-posts";
+import PostGrid from "../../components/PostGrid";
+import { PostStrapi } from "../../shared-types/post-strapi";
+import { SettingsStrapi } from "../../shared-types/settings-strapi";
+import { BaseTemplate } from "../Base";
 
 export type PostsTemplateProps = {
   settings: SettingsStrapi;
@@ -18,24 +22,29 @@ export const PostsTemplate = ({
   variables,
 }: PostsTemplateProps) => {
   const [statePosts, setStatePosts] = useState(posts);
-  const [stateVariables, setStateVariables] = useState(variables);
+  const [stateVariables, setStateVariables] = useState(
+    variables ?? defaultLoadPostsVariables
+  );
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [noMorePosts, setNoMorePosts] = useState(false);
+
   const handleLoadMorePosts = async () => {
     setButtonDisabled(true);
-    const newVariables = {
-      ...stateVariables,
-      start: stateVariables.start + stateVariables.limit,
-      limit: stateVariables.limit,
-    };
-    const morePosts = await loadPosts(newVariables);
-    if (!morePosts || !morePosts.posts || !morePosts.posts.length) {
-      setNoMorePosts(true);
-      return;
+    if (stateVariables.start && stateVariables.limit) {
+      const newVariables = {
+        ...stateVariables,
+        start: stateVariables.start + stateVariables.limit,
+        Tlimit: stateVariables.limit,
+      };
+      const morePosts = await loadPosts(newVariables);
+      if (!morePosts || !morePosts.posts || !morePosts.posts.length) {
+        setNoMorePosts(true);
+        return;
+      }
+      setButtonDisabled(true);
+      setStateVariables(newVariables);
+      setStatePosts((p) => [...p, ...morePosts.posts]);
     }
-    setButtonDisabled(true);
-    setStateVariables(newVariables);
-    setStatePosts((p) => [...p, ...morePosts.posts]);
   };
 
   return (
@@ -47,11 +56,11 @@ export const PostsTemplate = ({
             onClick={handleLoadMorePosts}
             disabled={buttonDisabled}
           >
-            {noMorePosts ? 'Sem mais posts' : 'Carregar mais'}
+            {noMorePosts ? "Sem mais posts" : "Carregar mais"}
           </Styled.Button>
         </Styled.ButtonContainer>
       ) : (
-        ''
+        ""
       )}
     </BaseTemplate>
   );

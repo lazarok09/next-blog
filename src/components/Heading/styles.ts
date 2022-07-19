@@ -1,5 +1,5 @@
-import styled, { css, DefaultTheme } from 'styled-components';
-import { HeadingProps } from '.';
+import styled, { css, DefaultTheme } from "styled-components";
+import { HeadingProps } from ".";
 
 const titleSize = {
   small: (theme: DefaultTheme) => css`
@@ -24,7 +24,7 @@ const mediaFont = (theme: DefaultTheme) => css`
 `;
 
 const titleCase = (uppercase: boolean) => css`
-  text-transform: ${uppercase ? 'uppercase' : 'none'};
+  text-transform: ${uppercase ? "uppercase" : "none"};
 `;
 export const Title = styled.h1<HeadingProps>`
   ${({ theme, colorDark, size, uppercase }) => css`

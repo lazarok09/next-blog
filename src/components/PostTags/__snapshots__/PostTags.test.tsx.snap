@@ -10,15 +10,15 @@ exports[`<PostTags should match snapshot 1`] = `
 }
 
 .c0 span::before {
-  content: ' ';
+  content: " ";
 }
 
 .c0 span::after {
-  content: ', ';
+  content: ", ";
 }
 
 .c0 span:last-child::after {
-  content: '';
+  content: "";
 }
 
 .c0 a {

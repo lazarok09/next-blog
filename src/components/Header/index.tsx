@@ -1,6 +1,6 @@
-import { Heading } from '../Heading';
-import { LogoLink } from '../LogoLink';
-import * as Styled from './styles';
+import { Heading } from "../Heading";
+import { LogoLink } from "../LogoLink";
+import * as Styled from "./styles";
 
 export type HeaderProps = {
   blogName: string;
