@@ -1,3 +1,4 @@
+import { Comments } from '../../components/Comments';
 import { Post } from '../../components/Post';
 import { PostTags } from '../../components/PostTags';
 import { PostStrapi } from '../../shared-types/post-strapi';
@@ -15,6 +16,13 @@ export const PostTemplate = ({ settings, post }: PostTemplateProps) => {
       <Styled.TagsContainer>
         <PostTags tags={post.tags} />
       </Styled.TagsContainer>
+
+      <Comments
+        title={post.title}
+        slug={post.slug}
+        id={post.id}
+        allowComments={post.allowComments}
+      />
     </BaseTemplate>
   );
 };
