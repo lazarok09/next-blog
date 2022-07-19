@@ -18,10 +18,7 @@ export const Comments = ({ title, allowComments, slug, id }: CommentsProps) => {
   };
   return (
     <Styled.Wrapper>
-      <DiscussionEmbed
-        shortname={`"blog-breve-explicacao"`}
-        config={dsConfig}
-      />
+      <DiscussionEmbed shortname={`blog-breve-explicacao`} config={dsConfig} />
     </Styled.Wrapper>
   );
 };
