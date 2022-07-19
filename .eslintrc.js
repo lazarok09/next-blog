@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:prettier/recommended',
+    'next/core-web-vitals',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
