@@ -27,6 +27,7 @@ export const ToggleTheme = () => {
   return (
     <Styled.Wrapper>
       <Styled.Label>
+        Toggle light and dark modes
         <Styled.Input
           type="checkbox"
           onChange={handleChange}
