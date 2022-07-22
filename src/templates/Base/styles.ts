@@ -1,7 +1,13 @@
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
-  ${() => css``}
+  ${() => css`
+    svg.search-ok-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-left: 1rem;
+    }
+  `}
 `;
 export const HeaderContainer = styled.div`
   ${({ theme }) => css`
