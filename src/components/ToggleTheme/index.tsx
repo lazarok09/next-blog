@@ -17,12 +17,16 @@ export const ToggleTheme = () => {
   }, []);
 
   useEffect(() => {
-    if (setTheme) setTheme(checked ? "inverted" : "default");
+    if (setTheme) {
+      setTheme(checked ? "inverted" : "default");
+    }
   }, [checked, setTheme]);
 
   const handleChange = () => {
     setChecked((checked) => !checked);
-    if (setTheme) setTheme(checked ? "inverted" : "default");
+    if (setTheme) {
+      setTheme(checked ? "inverted" : "default");
+    }
   };
   return (
     <Styled.Wrapper>

@@ -1,4 +1,5 @@
 import { CheckCircleOutline } from "@styled-icons/material-outlined";
+import { Cancel } from "@styled-icons/material-outlined";
 import { useRouter } from "next/dist/client/router";
 import { useEffect, useRef, useState } from "react";
 import { Footer } from "../../components/Footer";
@@ -17,7 +18,7 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState(router?.query.q || "");
   const [searchDisabled, setSearchDisabled] = useState(true);
-  const [isReady] = useState(true);
+  const [isReady, setIsReady] = useState(true);
   const inputTimeOut = useRef(null);
 
   useEffect(() => {
@@ -42,12 +43,15 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
     }
 
     inputTimeOut.current = setTimeout(() => {
-      router.push({
-        pathname: "/search/",
-        query: {
-          q: searchValue,
-        },
-      });
+      setIsReady(false);
+      router
+        .push({
+          pathname: "/search/",
+          query: {
+            q: searchValue,
+          },
+        })
+        .then(() => setIsReady(true));
     }, 600); // 0.6 seconds
 
     return () => clearTimeout(inputTimeOut.current);
@@ -77,11 +81,14 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
           onChange={(e) => setSearchValue(e.target.value)}
           disabled={searchDisabled}
         />
-
-        <CheckCircleOutline
-          className="search-ok-icon"
-          aria-lable="input enabled"
-        />
+        {searchDisabled ? (
+          <Cancel className="search-cancel-icon" aria-lable="input disabled" />
+        ) : (
+          <CheckCircleOutline
+            className="search-ok-icon"
+            aria-lable="input enabled"
+          />
+        )}
       </Styled.SearchContainer>
       <Styled.ContentContainer>{children}</Styled.ContentContainer>
       <Styled.FooterContainer>
