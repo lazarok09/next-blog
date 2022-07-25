@@ -57,18 +57,22 @@ exports[`<Post /> should render 1`] = `
   margin-bottom: 2.4rem;
 }
 
-.c8 {
+.c9 {
   font-size: calc(1.6rem + 0.2rem);
   line-height: 1.5;
 }
 
-.c8 p {
+.c9 iframe[src*='ads'] {
+  display: none;
+}
+
+.c9 p {
   margin: 2.4rem 0;
 }
 
-.c8 a,
-.c8 a:visited,
-.c8 a:link {
+.c9 a,
+.c9 a:visited,
+.c9 a:link {
   color: #dc143c;
   -webkit-transition: all 300ms ease-in-out;
   transition: all 300ms ease-in-out;
@@ -76,92 +80,66 @@ exports[`<Post /> should render 1`] = `
   text-decoration: none;
 }
 
-.c8 a:hover {
+.c9 a:hover {
   -webkit-filter: brightness(80%);
   filter: brightness(80%);
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }
 
-.c8 code {
-  font-family: monospace;
-  color: #dc143c;
-  font-size: 1.6rem;
-  background: #DDDDDD;
-  padding: 0.2rem;
-  margin: 0.2rem;
+.c9 img {
+  max-width: 100%;
 }
 
-.c8 pre {
-  background: #000000;
-  padding: 2.4rem;
-  font-family: monospace;
-  color: #FFFFFF;
-  margin: 4.0rem 0;
-  margin: 2.4rem 0;
-  width: 100%;
-  overflow-x: auto;
-  font-size: 1.6rem;
-}
-
-.c8 pre code {
-  color: inherit;
-  background: inherit;
-}
-
-.c8 img {
-  width: 100%;
-}
-
-.c8 .image {
+.c9 .image {
   background: #DDDDDD;
   line-height: 0;
   margin: 2.4rem 0;
   max-width: 100%;
 }
 
-.c8 .image figcaption {
+.c9 .image figcaption {
   font-size: 1.6rem;
   padding: 1.6rem;
   text-align: center;
   line-height: 1.3;
 }
 
-.c8 .image-style-side {
+.c9 .image-style-side {
   float: right;
   max-width: 50%;
   margin: 0 2.4rem;
 }
 
-.c8 hr {
+.c9 hr {
   border: none;
   border-bottom: 0.1rem solid #DDDDDD;
 }
 
-.c8 ul,
-.c8 ol {
+.c9 ul,
+.c9 ol {
   margin: 2.4rem 4.0rem;
 }
 
-.c8 .table {
+.c9 .table {
   max-width: 100%;
   overflow: hidden;
   overflow-x: auto;
 }
 
-.c8 table {
+.c9 table {
   width: 100%;
   border-collapse: collapse;
   margin: 2.4rem 0;
 }
 
-.c8 table th,
-.c8 table td {
+.c9 table th,
+.c9 table td {
   padding: 1.6rem;
   border: 0.1rem solid #DDDDDD;
 }
 
-.c8 blockquote {
+.c9 blockquote {
   border-left: 0.5rem solid #dc143c;
   color: #AAAAAA;
   -webkit-filter: brightness(80%);
@@ -171,9 +149,275 @@ exports[`<Post /> should render 1`] = `
   margin: 2.4rem;
 }
 
-.c8 iframe {
+.c9 iframe {
   max-width: 100%;
   height: 50vh;
+}
+
+.c8 pre[class*="language-"],
+.c8 code[class*="language-"] {
+  color: #d4d4d4;
+  font-size: 13px;
+  text-shadow: none;
+  font-family: Menlo,Monaco,Consolas,"Andale Mono","Ubuntu Mono","Courier New",monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.c8 pre[class*="language-"]::selection,
+.c8 code[class*="language-"]::selection,
+.c8 pre[class*="language-"] *::selection,
+.c8 code[class*="language-"] *::selection {
+  text-shadow: none;
+  background: #264f78;
+}
+
+.c8 pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  background: #1e1e1e;
+}
+
+.c8:not(pre) > code[class*="language-"] {
+  padding: 0.1em 0.3em;
+  border-radius: 0.3em;
+  color: #db4c69;
+  background: #1e1e1e;
+}
+
+.c8 .namespace {
+  opacity: 0.7;
+}
+
+.c8 .token.doctype .token.doctype-tag {
+  color: #569cd6;
+}
+
+.c8 .token.doctype .token.name {
+  color: #9cdcfe;
+}
+
+.c8 .token.comment,
+.c8 .token.prolog {
+  color: #6a9955;
+}
+
+.c8 .token.punctuation,
+.c8 .language-html .language-css .token.punctuation,
+.c8 .language-html .language-javascript .token.punctuation {
+  color: #d4d4d4;
+}
+
+.c8 .token.property,
+.c8 .token.tag,
+.c8 .token.boolean,
+.c8 .token.number,
+.c8 .token.constant,
+.c8 .token.symbol,
+.c8 .token.inserted,
+.c8 .token.unit {
+  color: #b5cea8;
+}
+
+.c8 .token.selector,
+.c8 .token.attr-name,
+.c8 .token.string,
+.c8 .token.char,
+.c8 .token.builtin,
+.c8 .token.deleted {
+  color: #ce9178;
+}
+
+.c8 .language-css .token.string.url {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+}
+
+.c8 .token.operator,
+.c8 .token.entity {
+  color: #d4d4d4;
+}
+
+.c8 .token.operator.arrow {
+  color: #569cd6;
+}
+
+.c8 .token.atrule {
+  color: #ce9178;
+}
+
+.c8 .token.atrule .token.rule {
+  color: #c586c0;
+}
+
+.c8 .token.atrule .token.url {
+  color: #9cdcfe;
+}
+
+.c8 .token.atrule .token.url .token.function {
+  color: #dcdcaa;
+}
+
+.c8 .token.atrule .token.url .token.punctuation {
+  color: #d4d4d4;
+}
+
+.c8 .token.keyword {
+  color: #569cd6;
+}
+
+.c8 .token.keyword.module,
+.c8 .token.keyword.control-flow {
+  color: #c586c0;
+}
+
+.c8 .token.function,
+.c8 .token.function .token.maybe-class-name {
+  color: #dcdcaa;
+}
+
+.c8 .token.regex {
+  color: #d16969;
+}
+
+.c8 .token.important {
+  color: #569cd6;
+}
+
+.c8 .token.italic {
+  font-style: italic;
+}
+
+.c8 .token.constant {
+  color: #9cdcfe;
+}
+
+.c8 .token.class-name,
+.c8 .token.maybe-class-name {
+  color: #4ec9b0;
+}
+
+.c8 .token.console {
+  color: #9cdcfe;
+}
+
+.c8 .token.parameter {
+  color: #9cdcfe;
+}
+
+.c8 .token.interpolation {
+  color: #9cdcfe;
+}
+
+.c8 .token.punctuation.interpolation-punctuation {
+  color: #569cd6;
+}
+
+.c8 .token.boolean {
+  color: #569cd6;
+}
+
+.c8 .token.property,
+.c8 .token.variable,
+.c8 .token.imports .token.maybe-class-name,
+.c8 .token.exports .token.maybe-class-name {
+  color: #9cdcfe;
+}
+
+.c8 .token.selector {
+  color: #d7ba7d;
+}
+
+.c8 .token.escape {
+  color: #d7ba7d;
+}
+
+.c8 .token.tag {
+  color: #569cd6;
+}
+
+.c8 .token.tag .token.punctuation {
+  color: #808080;
+}
+
+.c8 .token.cdata {
+  color: #808080;
+}
+
+.c8 .token.attr-name {
+  color: #9cdcfe;
+}
+
+.c8 .token.attr-value,
+.c8 .token.attr-value .token.punctuation {
+  color: #ce9178;
+}
+
+.c8 .token.attr-value .token.punctuation.attr-equals {
+  color: #d4d4d4;
+}
+
+.c8 .token.entity {
+  color: #569cd6;
+}
+
+.c8 .token.namespace {
+  color: #4ec9b0;
+}
+
+.c8 pre[class*="language-javascript"],
+.c8 code[class*="language-javascript"],
+.c8 pre[class*="language-jsx"],
+.c8 code[class*="language-jsx"],
+.c8 pre[class*="language-typescript"],
+.c8 code[class*="language-typescript"],
+.c8 pre[class*="language-tsx"],
+.c8 code[class*="language-tsx"] {
+  color: #9cdcfe;
+}
+
+.c8 pre[class*="language-css"],
+.c8 code[class*="language-css"] {
+  color: #ce9178;
+}
+
+.c8 pre[class*="language-html"],
+.c8 code[class*="language-html"] {
+  color: #d4d4d4;
+}
+
+.c8 .language-regex .token.anchor {
+  color: #dcdcaa;
+}
+
+.c8 .language-html .token.punctuation {
+  color: #808080;
+}
+
+.c8 pre[class*="language-"] > code[class*="language-"] {
+  position: relative;
+  z-index: 1;
+}
+
+.c8 .line-highlight.line-highlight {
+  background: #f7ebc6;
+  box-shadow: inset 5px 0 0 #f7d87c;
+  z-index: 0;
 }
 
 .c0 {
@@ -197,14 +441,21 @@ exports[`<Post /> should render 1`] = `
 }
 
 @media (max-width:768px) {
-  .c8 {
+  .c9 {
     font-size: 2rem;
   }
 
-  .c8 .image-style-side {
+  .c9 .image-style-side {
     float: none;
     max-width: 100%;
     margin: 0;
+  }
+}
+
+@media print {
+  .c8 pre[class*="language-"],
+  .c8 code[class*="language-"] {
+    text-shadow: none;
   }
 }
 
@@ -280,243 +531,255 @@ exports[`<Post /> should render 1`] = `
         <div
           class="c8"
         >
-          <figure
-            class="image"
+          <div
+            class="c9"
           >
-            <img
-              alt="white and black ceramic mug on green table cloth"
-              src="https://images.unsplash.com/photo-1585236616251-9fd0f67b0000?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
-            />
-          </figure>
-          <p>
-             
-          </p>
-          <h2>
-             
-          </h2>
-          <h2>
-            Introduction
-          </h2>
-          <p>
-            JavaScript is a cross-platform, object-oriented scripting language. It is a small and lightweight language. Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic control over them.
-          </p>
-          <p>
-            JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of language elements such as operators, control structures, and statements. Core JavaScript can be extended for a variety of purposes by supplementing it with additional objects; for example:
-          </p>
-          <figure
-            class="image image-style-side"
-          >
-            <img
-              alt="10 Wallpapers para Programadores - AlexRosa.Net | Programação, Papeis de  parede, Papeis de parede galaxia"
-              src="https://i.pinimg.com/originals/16/0b/7d/160b7d970276492f22d19f58dde2ddcb.jpg"
-            />
-          </figure>
-          <h3>
-            JavaScript and Java
-          </h3>
-          <p>
-                JavaScript and Java are similar in some ways but
-            <strong>
-               fundamentally            different i
-            </strong>
-            n some others. The JavaScript language resembles Java but  does not have Java's static typing and strong type checking.            JavaScript follows most Java expression syntax, naming conventions    and basic control-flow constructs which was the reason why it was renamed from LiveScript to JavaScript.  In contrast to Java's compile-time system of classes built by  declarations, JavaScript supports a runtime system based on a small   number of data types representing numeric, Boolean, and string   values. JavaScript has a prototype-based object model instead of the more common class-based object model. The prototype-based model provides dynamic inheritance; that is, what is inherited can vary for individual objects. JavaScript also supports functions without  any special declarative requirements. Functions can be properties of objects, executing as loosely typed methods.  JavaScript is a very free-form language compared to Java. You do not    have to declare all variables, classes, and methods. You do not have  to be concerned with whether methods are public, private, or            protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed.  
-          </p>
-          <h3>
-             
-          </h3>
-          <h3>
-            Right Text
-          </h3>
-          <p
-            style="text-align:right;"
-          >
-            Functions can be properties of objects, executing as loosely typed methods.  JavaScript is a very free-form language compared to Java. You do not    have to declare all variables, classes, and methods. You do not have  to be concerned with whether methods are public, private, or            protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed. 
-          </p>
-          <h3>
-            Left Text
-          </h3>
-          <p>
-            Functions can be properties of objects, executing as loosely typed methods.  JavaScript is a very free-form language compared to Java. You do not    have to declare all variables, classes, and methods. You do not have  to be concerned with whether methods are public, private, or            protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed. 
-          </p>
-          <p>
-             
-          </p>
-          <h2>
-            A bulleted list
-          </h2>
-          <ul>
-            <li>
-              stuff
-            </li>
-            <li>
-              stuff
-            </li>
-            <li>
-              stuff
-            </li>
-            <li>
-              stuff
-            </li>
-          </ul>
-          <blockquote>
+            <figure
+              class="image"
+            >
+              <img
+                alt="white and black ceramic mug on green table cloth"
+                src="https://images.unsplash.com/photo-1585236616251-9fd0f67b0000?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+              />
+            </figure>
+            <p>
+               
+            </p>
+            <h2>
+               
+            </h2>
+            <h2>
+              Introduction
+            </h2>
+            <p>
+              JavaScript is a cross-platform, object-oriented scripting language. It is a small and lightweight language. Inside a host environment (for example, a web browser), JavaScript can be connected to the objects of its environment to provide programmatic control over them.
+            </p>
+            <p>
+              JavaScript contains a standard library of objects, such as Array, Date, and Math, and a core set of language elements such as operators, control structures, and statements. Core JavaScript can be extended for a variety of purposes by supplementing it with additional objects; for example:
+            </p>
+            <figure
+              class="image image-style-side"
+            >
+              <img
+                alt="10 Wallpapers para Programadores - AlexRosa.Net | Programação, Papeis de  parede, Papeis de parede galaxia"
+                src="https://i.pinimg.com/originals/16/0b/7d/160b7d970276492f22d19f58dde2ddcb.jpg"
+              />
+            </figure>
             <h3>
-              Lázaro está citando isso pra editar um bloco de citação depois rsrs - Lázaro.
+              JavaScript and Java
             </h3>
-          </blockquote>
-          <h3>
-             
-          </h3>
-          <h3>
-            Hello world
-          </h3>
-          <p>
-                To get started with writing JavaScript, open the Scratchpad and            write your first "Hello world" JavaScript code:   
-          </p>
-          <h3>
-             
-          </h3>
-          <pre>
-            <code
-              class="language-plaintext"
+            <p>
+                  JavaScript and Java are similar in some ways but
+              <strong>
+                 fundamentally            different i
+              </strong>
+              n some others. The JavaScript language resembles Java but  does not have Java's static typing and strong type checking.            JavaScript follows most Java expression syntax, naming conventions    and basic control-flow constructs which was the reason why it was renamed from LiveScript to JavaScript.  In contrast to Java's compile-time system of classes built by  declarations, JavaScript supports a runtime system based on a small   number of data types representing numeric, Boolean, and string   values. JavaScript has a prototype-based object model instead of the more common class-based object model. The prototype-based model provides dynamic inheritance; that is, what is inherited can vary for individual objects. JavaScript also supports functions without  any special declarative requirements. Functions can be properties of objects, executing as loosely typed methods.  JavaScript is a very free-form language compared to Java. You do not    have to declare all variables, classes, and methods. You do not have  to be concerned with whether methods are public, private, or            protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed.  
+            </p>
+            <h3>
+               
+            </h3>
+            <h3>
+              Right Text
+            </h3>
+            <p
+              style="text-align:right;"
             >
-              console.log("Hello World") 
-            </code>
-          </pre>
-          <h3>
-            With Functions
-          </h3>
-          <pre>
-            <code
+              Functions can be properties of objects, executing as loosely typed methods.  JavaScript is a very free-form language compared to Java. You do not    have to declare all variables, classes, and methods. You do not have  to be concerned with whether methods are public, private, or            protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed. 
+            </p>
+            <h3>
+              Left Text
+            </h3>
+            <p>
+              Functions can be properties of objects, executing as loosely typed methods.  JavaScript is a very free-form language compared to Java. You do not    have to declare all variables, classes, and methods. You do not have  to be concerned with whether methods are public, private, or            protected, and you do not have to implement interfaces. Variables, parameters, and function return types are not explicitly typed. 
+            </p>
+            <p>
+               
+            </p>
+            <h2>
+              A bulleted list
+            </h2>
+            <ul>
+              <li>
+                stuff
+              </li>
+              <li>
+                stuff
+              </li>
+              <li>
+                stuff
+              </li>
+              <li>
+                stuff
+              </li>
+            </ul>
+            <blockquote>
+              <h3>
+                Lázaro está citando isso pra editar um bloco de citação depois rsrs - Lázaro.
+              </h3>
+            </blockquote>
+            <h3>
+               
+            </h3>
+            <h3>
+              Hello world
+            </h3>
+            <p>
+                  To get started with writing JavaScript, open the Scratchpad and            write your first "Hello world" JavaScript code:   
+            </p>
+            <h3>
+               
+            </h3>
+            <pre
               class="language-plaintext"
+              tabindex="0"
             >
-                function sayHelloWorld()&lt;br /&gt;
+              <code
+                class="language-plaintext"
+              >
+                console.log("Hello World") 
+              </code>
+            </pre>
+            <h3>
+              With Functions
+            </h3>
+            <pre
+              class="language-plaintext"
+              tabindex="0"
+            >
+              <code
+                class="language-plaintext"
+              >
+                  function sayHelloWorld()&lt;br /&gt;
             { return "Hello World" }
-            </code>
-          </pre>
-          <h3>
-             
-          </h3>
-          <h3>
-            You can build a collection of items
-          </h3>
-          <h4>
-            Array of fruits (collection)
-          </h4>
-          <h4>
-            <code>
-                    let fruits = ["Apple", "Orange","Pinapple"]    
-            </code>
-               
-          </h4>
-          <ul>
-            <li>
-              use objects inside array itens
-            </li>
-          </ul>
-          <p>
-              
-            <code>
-              let ArrayOfObjects = [{name: "Sr.Nothing", age: 14}, {name:"Sr.OtherGuy", age: 25}]
-            </code>
-             
-          </p>
-          <ul>
-            <li>
-              Numbers are valid too  
-            </li>
-          </ul>
-          <p>
-            <code>
-               let array = [1,2,3,4,5,6,7,8,9,10] 
-            </code>
-          </p>
-          <h2>
-            Bibliotecas e Frameworks
-          </h2>
-          <figure
-            class="table"
-          >
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    Front-end
-                  </td>
-                  <td>
-                    Back-end
-                  </td>
-                  <td>
-                    Mobile
-                  </td>
-                  <td>
-                    titutlo
-                  </td>
-                  <td>
-                    titutlo
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    React
-                  </td>
-                  <td>
-                    Node.js
-                  </td>
-                  <td>
-                    React Native
-                  </td>
-                  <td>
-                    info
-                  </td>
-                  <td>
-                    info
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Vue
-                  </td>
-                  <td>
-                    Express
-                  </td>
-                  <td>
-                    React Native
-                  </td>
-                  <td>
-                    info
-                  </td>
-                  <td>
-                    info
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    Angular
-                  </td>
-                  <td>
-                    Nest.js
-                  </td>
-                  <td>
-                    React Native
-                  </td>
-                  <td>
-                    info
-                  </td>
-                  <td>
-                    info
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </figure>
-          <h2>
-            Another Example
-          </h2>
-          <pre>
-            <code
-              class="language-plaintext"
+              </code>
+            </pre>
+            <h3>
+               
+            </h3>
+            <h3>
+              You can build a collection of items
+            </h3>
+            <h4>
+              Array of fruits (collection)
+            </h4>
+            <h4>
+              <code>
+                      let fruits = ["Apple", "Orange","Pinapple"]    
+              </code>
+                 
+            </h4>
+            <ul>
+              <li>
+                use objects inside array itens
+              </li>
+            </ul>
+            <p>
+                
+              <code>
+                let ArrayOfObjects = [{name: "Sr.Nothing", age: 14}, {name:"Sr.OtherGuy", age: 25}]
+              </code>
+               
+            </p>
+            <ul>
+              <li>
+                Numbers are valid too  
+              </li>
+            </ul>
+            <p>
+              <code>
+                 let array = [1,2,3,4,5,6,7,8,9,10] 
+              </code>
+            </p>
+            <h2>
+              Bibliotecas e Frameworks
+            </h2>
+            <figure
+              class="table"
             >
-              var fruit = ['cherries', 'apples', 'bananas'];
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      Front-end
+                    </td>
+                    <td>
+                      Back-end
+                    </td>
+                    <td>
+                      Mobile
+                    </td>
+                    <td>
+                      titutlo
+                    </td>
+                    <td>
+                      titutlo
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      React
+                    </td>
+                    <td>
+                      Node.js
+                    </td>
+                    <td>
+                      React Native
+                    </td>
+                    <td>
+                      info
+                    </td>
+                    <td>
+                      info
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Vue
+                    </td>
+                    <td>
+                      Express
+                    </td>
+                    <td>
+                      React Native
+                    </td>
+                    <td>
+                      info
+                    </td>
+                    <td>
+                      info
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Angular
+                    </td>
+                    <td>
+                      Nest.js
+                    </td>
+                    <td>
+                      React Native
+                    </td>
+                    <td>
+                      info
+                    </td>
+                    <td>
+                      info
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </figure>
+            <h2>
+              Another Example
+            </h2>
+            <pre
+              class="language-plaintext"
+              tabindex="0"
+            >
+              <code
+                class="language-plaintext"
+              >
+                var fruit = ['cherries', 'apples', 'bananas'];
 fruit.sort(); // ['apples', 'bananas', 'cherries']
 
 var scores = [1, 10, 2, 21];
@@ -528,15 +791,16 @@ var things = ['word', 'Word', '1 Word', '2 Words'];
 things.sort(); // ['1 Word', '2 Words', 'Word', 'word']
 // Em Unicode, números vêem antes de letras maiúsculas,
 // as quais vêem antes das minúsculas.
-            </code>
-          </pre>
-          <figure
-            class="media"
-          >
-            <oembed
-              url="https://www.youtube.com/watch?v=PkZNo7MFNFg"
-            />
-          </figure>
+              </code>
+            </pre>
+            <figure
+              class="media"
+            >
+              <oembed
+                url="https://www.youtube.com/watch?v=PkZNo7MFNFg"
+              />
+            </figure>
+          </div>
         </div>
       </div>
     </div>
