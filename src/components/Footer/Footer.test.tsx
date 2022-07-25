@@ -50,7 +50,7 @@ describe("<Footer />", () => {
       }
 
       .c2 img {
-        max-width: 100%;
+        width: 100%;
       }
 
       .c2 .image {

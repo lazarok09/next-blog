@@ -31,17 +31,21 @@ export const PostsTemplate = ({
 
   const handleLoadMorePosts = async () => {
     setButtonDisabled(true);
+
     const newVariables = {
       ...stateVariables,
       start: stateVariables.start + stateVariables.limit,
-      Tlimit: stateVariables.limit,
+      limit: stateVariables.limit,
     };
+
     const morePosts = await loadPosts(newVariables);
+
     if (!morePosts || !morePosts.posts || !morePosts.posts.length) {
       setNoMorePosts(true);
       return;
     }
-    setButtonDisabled(true);
+
+    setButtonDisabled(false);
     setStateVariables(newVariables);
     setStatePosts((p) => [...p, ...morePosts.posts]);
   };

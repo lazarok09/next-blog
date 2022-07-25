@@ -88,7 +88,7 @@ exports[`<Post /> should render 1`] = `
 }
 
 .c9 img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .c9 .image {

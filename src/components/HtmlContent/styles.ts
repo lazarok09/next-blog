@@ -24,8 +24,7 @@ export const Container = styled.div`
       text-decoration: underline;
     }
     img {
-       max-width: 100%;
-
+       width: 100%;
     }
     .image {
       background: ${theme.colors.mediumGray};

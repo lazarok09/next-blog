@@ -32,7 +32,7 @@ exports[`<TextComponent /> should match snapshot 1`] = `
 }
 
 .c1 img {
-  max-width: 100%;
+  width: 100%;
 }
 
 .c1 .image {
