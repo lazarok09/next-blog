@@ -1,12 +1,14 @@
 import { CheckCircleOutline } from "@styled-icons/material-outlined";
 import { Cancel } from "@styled-icons/material-outlined";
 import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { Footer } from "../../components/Footer";
 import { GoToTop } from "../../components/GoToTop";
 import { Header } from "../../components/Header";
 import { Menu } from "../../components/Menu";
 import { ToggleTheme } from "../../components/ToggleTheme";
+import config from "../../config";
 import { SettingsStrapi } from "../../shared-types/settings-strapi";
 import * as Styled from "./styles";
 
@@ -59,6 +61,34 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
 
   return (
     <Styled.Wrapper>
+      <Head>
+        <title>
+          {settings.blogName} | {settings.blogDescription}
+        </title>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta property="og:image" content={settings.logo.url} />
+        <link rel="image_src" href={settings.logo.url} />
+        <meta
+          property="og:title"
+          content={`${settings.blogName} ${settings.blogDescription}`}
+        />
+
+        <meta property="og:description" content={settings.blogDescription} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${config.url}/`} />
+        <meta property="og:site_name" content={settings.blogName} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={`${config.url}/`} />
+        <link rel={"canonical"} href={`${config.url}/`} />
+
+        <meta
+          name="twitter:title"
+          content={`${settings.blogName} ${config.defaultSlug}`}
+        />
+        <meta name="twitter:description" content={settings.blogDescription} />
+        <meta name="twitter:image" content={settings.logo.url} />
+      </Head>
       <ToggleTheme />
       <Menu
         links={settings.menuLink}
