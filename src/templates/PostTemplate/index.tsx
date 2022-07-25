@@ -22,8 +22,11 @@ export const PostTemplate = ({ settings, post }: PostTemplateProps) => {
         </title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta property="og:image" content={post.cover.url} />
-        <link rel="image_src" href={post.cover.url} />
+        <meta
+          property="og:image"
+          content={encodeURIComponent(post.cover.url)}
+        />
+        <link rel="image_src" href={encodeURIComponent(post.cover.url)} />
         <meta
           property="og:title"
           content={`${settings.blogName} ${post.title}`}
@@ -39,7 +42,10 @@ export const PostTemplate = ({ settings, post }: PostTemplateProps) => {
 
         <meta name="twitter:title" content={`${post.title}`} />
         <meta name="twitter:description" content={post.excerpt} />
-        <meta name="twitter:image" content={post.cover.url} />
+        <meta
+          name="twitter:image"
+          content={encodeURIComponent(post.cover.url)}
+        />
       </Head>
       <Post {...post} />
       <Styled.TagsContainer>

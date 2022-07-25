@@ -67,8 +67,11 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
         </title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta property="og:image" content={settings.logo.url} />
-        <link rel="image_src" href={settings.logo.url} />
+        <meta
+          property="og:image"
+          content={encodeURIComponent(settings.logo.url)}
+        />
+        <link rel="image_src" href={encodeURIComponent(settings.logo.url)} />
         <meta
           property="og:title"
           content={`${settings.blogName} ${settings.blogDescription}`}
@@ -87,19 +90,22 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
           content={`${settings.blogName} ${config.defaultSlug}`}
         />
         <meta name="twitter:description" content={settings.blogDescription} />
-        <meta name="twitter:image" content={settings.logo.url} />
+        <meta
+          name="twitter:image"
+          content={encodeURIComponent(settings.logo.url)}
+        />
       </Head>
       <ToggleTheme />
       <Menu
         links={settings.menuLink}
         blogName={settings.blogName}
-        logo={settings.logo.url}
+        logo={encodeURIComponent(settings.logo.url)}
       />
       <Styled.HeaderContainer>
         <Header
           blogName={settings.blogName}
           blogDescription={settings.blogDescription}
-          logo={settings.logo.url}
+          logo={encodeURIComponent(settings.logo.url)}
         />
       </Styled.HeaderContainer>
 
