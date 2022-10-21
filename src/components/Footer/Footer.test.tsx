@@ -116,8 +116,7 @@ describe("<Footer />", () => {
         height: 50vh;
       }
 
-      .c1 pre[class*="language-"],
-      .c1 code[class*="language-"] {
+      .c1 pre[class*="language-"],.c1 code[class*="language-"] {
         color: #d4d4d4;
         font-size: 13px;
         text-shadow: none;
@@ -140,10 +139,7 @@ describe("<Footer />", () => {
         hyphens: none;
       }
 
-      .c1 pre[class*="language-"]::selection,
-      .c1 code[class*="language-"]::selection,
-      .c1 pre[class*="language-"] *::selection,
-      .c1 code[class*="language-"] *::selection {
+      .c1 pre[class*="language-"]::selection,.c1 code[class*="language-"]::selection,.c1 pre[class*="language-"] *::selection,.c1 code[class*="language-"] *::selection {
         text-shadow: none;
         background: #264f78;
       }
@@ -342,24 +338,15 @@ describe("<Footer />", () => {
         color: #4ec9b0;
       }
 
-      .c1 pre[class*="language-javascript"],
-      .c1 code[class*="language-javascript"],
-      .c1 pre[class*="language-jsx"],
-      .c1 code[class*="language-jsx"],
-      .c1 pre[class*="language-typescript"],
-      .c1 code[class*="language-typescript"],
-      .c1 pre[class*="language-tsx"],
-      .c1 code[class*="language-tsx"] {
+      .c1 pre[class*="language-javascript"],.c1 code[class*="language-javascript"],.c1 pre[class*="language-jsx"],.c1 code[class*="language-jsx"],.c1 pre[class*="language-typescript"],.c1 code[class*="language-typescript"],.c1 pre[class*="language-tsx"],.c1 code[class*="language-tsx"] {
         color: #9cdcfe;
       }
 
-      .c1 pre[class*="language-css"],
-      .c1 code[class*="language-css"] {
+      .c1 pre[class*="language-css"],.c1 code[class*="language-css"] {
         color: #ce9178;
       }
 
-      .c1 pre[class*="language-html"],
-      .c1 code[class*="language-html"] {
+      .c1 pre[class*="language-html"],.c1 code[class*="language-html"] {
         color: #d4d4d4;
       }
 
@@ -395,8 +382,7 @@ describe("<Footer />", () => {
       }
 
       @media print {
-        .c1 pre[class*="language-"],
-        .c1 code[class*="language-"] {
+        .c1 pre[class*="language-"],.c1 code[class*="language-"] {
           text-shadow: none;
         }
       }
