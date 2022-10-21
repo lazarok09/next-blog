@@ -63,6 +63,18 @@ exports[`<ArticleHeader /> should render heading, excerpt, cover img and meta 1`
   }
 }
 
+@media (max-width:768px) {
+  .c0 .c1 {
+    font-size: calc(2.4rem + 1rem);
+  }
+}
+
+@media (max-width:768px) {
+  .c3 {
+    font-size: calc(1.6rem + 0.2rem);
+  }
+}
+
 <div>
   <header
     class="c0"
