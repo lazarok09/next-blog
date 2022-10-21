@@ -428,6 +428,18 @@ exports[`<Post /> should render 1`] = `
 }
 
 @media (max-width:768px) {
+  .c1 .c2 {
+    font-size: calc(2.4rem + 1rem);
+  }
+}
+
+@media (max-width:768px) {
+  .c4 {
+    font-size: calc(1.6rem + 0.2rem);
+  }
+}
+
+@media (max-width:768px) {
   .c9 {
     font-size: 2rem;
   }
@@ -442,6 +454,18 @@ exports[`<Post /> should render 1`] = `
 @media print {
   .c8 pre[class*="language-"],.c8 code[class*="language-"] {
     text-shadow: none;
+  }
+}
+
+@media (max-width:768px) {
+  .c0 {
+    padding: 1.6rem;
+  }
+}
+
+@media (max-width:768px) {
+  .c7 {
+    padding: 1.6rem;
   }
 }
 
