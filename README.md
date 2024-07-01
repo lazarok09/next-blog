@@ -14,6 +14,30 @@
 <br>
 <hr>
 
+## MongoDB
+
+To connect to the mongodb using shell, please provide the username/password of the application.
+
+```
+mongosh "mongodb+srv://cluster0.9bo4v.mongodb.net/" --apiVersion 1 --username <username>
+```
+
+And start your first queries by using commands such as
+
+```
+show dbs
+use <db>
+
+show collections
+
+db.<collection>
+
+```
+
+Docs available at:
+1.📘 https://www.mongodb.com/docs/mongodb-shell/run-commands/
+2.📘 https://www.mongodb.com/docs/v3.4/reference/mongo-shell/#command-line-options
+
 <h2 id="tecnologias">
  Tec's ⤵️
 </h2>
