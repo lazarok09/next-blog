@@ -1,12 +1,14 @@
 package authors
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type Author struct {
-	DisplayName  string `json:"displayName"`
-	Slug         string `json:"slug"`
-	Published_At string `json:"published_at"`
-	Created_At   string `json:"created_at"`
-	Updated_At   string `json:"updated_at"`
-	Id           string `json:"id"`
-	CreatedBy    string `json:"createdBy"`
-	UpdateBy     string `json:"updatedBy"`
+	Id           primitive.ObjectID `bson:"_id"`
+	DisplayName  string             `bson:"displayName"`
+	Slug         string             `bson:"slug"`
+	Published_At primitive.DateTime `bson:"published_at"`
+	Created_At   primitive.DateTime `bson:"created_at"`
+	Updated_At   primitive.DateTime `bson:"updated_at"`
+	CreatedBy    string             `bson:"createdBy"`
+	UpdateBy     string             `bson:"updatedBy"`
 }

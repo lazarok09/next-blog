@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/lazarok09/go-blog/config"
+	authors "github.com/lazarok09/go-blog/models"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -35,9 +36,11 @@ func Connect() {
 	if err != nil {
 		panic("Error when accessing the authors for testing")
 	}
-	var result struct{}
+	var result authors.Author
 
-	collection.FindOne(ctx, bson.D{}).Decode(&result)
+	filter := bson.D{}
+
+	collection.FindOne(ctx, filter).Decode(&result)
 
 	fmt.Println(result)
 
