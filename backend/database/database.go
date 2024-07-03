@@ -2,9 +2,11 @@ package database
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/lazarok09/go-blog/config"
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -21,10 +23,22 @@ func Connect() {
 			panic(err)
 		}
 	}()
+
 	err = client.Ping(ctx, readpref.Primary())
 
 	if err != nil {
 		panic("Failure when connect database")
 	}
+
+	collection := client.Database("strapi-blog").Collection("authors")
+
+	if err != nil {
+		panic("Error when accessing the authors for testing")
+	}
+	var result struct{}
+
+	collection.FindOne(ctx, bson.D{}).Decode(&result)
+
+	fmt.Println(result)
 
 }
