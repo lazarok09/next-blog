@@ -4,13 +4,14 @@ import (
 	"fmt"
 
 	"github.com/lazarok09/go-blog/config"
-	"github.com/lazarok09/go-blog/database"
+
+	"github.com/lazarok09/go-blog/router"
 )
 
 func main() {
-	fmt.Println("hello world")
+	fmt.Println("Welcome back master")
 	config.InitConfig()
 
-	database.Connect()
-	
+	router.InitRoutes()
+
 }

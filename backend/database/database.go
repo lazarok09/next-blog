@@ -2,11 +2,10 @@ package database
 
 import (
 	"context"
-	"fmt"
 	"time"
 
 	"github.com/lazarok09/go-blog/config"
-	authors "github.com/lazarok09/go-blog/models"
+	"github.com/lazarok09/go-blog/models/posts"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -15,7 +14,7 @@ import (
 
 // mongodb+srv://lazarok09:<password>@cluster0.9bo4v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
-func Connect() {
+func Connect() posts.Post {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(config.MONGODB_CONNECT_STR))
@@ -31,17 +30,17 @@ func Connect() {
 		panic("Failure when connect database")
 	}
 
-	collection := client.Database("strapi-blog").Collection("authors")
+	collection := client.Database("strapi-blog").Collection("posts")
 
 	if err != nil {
-		panic("Error when accessing the authors for testing")
+		panic("Error when accessing the posts for testing")
 	}
-	var result authors.Author
+	var result posts.Post
 
 	filter := bson.D{}
 
 	collection.FindOne(ctx, filter).Decode(&result)
 
-	fmt.Println(result)
+	return result
 
 }
