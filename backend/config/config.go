@@ -8,6 +8,7 @@ import (
 )
 
 var MONGODB_CONNECT_STR string
+var DATABASE_NAME string
 
 func InitConfig() {
 	err := godotenv.Load()
@@ -16,5 +17,6 @@ func InitConfig() {
 
 	}
 	MONGODB_CONNECT_STR = os.Getenv("MONGO_CONNECT_STR")
+	DATABASE_NAME = os.Getenv("DATABASE_NAME")
 
 }

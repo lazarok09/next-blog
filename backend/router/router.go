@@ -1,27 +1,21 @@
 package router
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 
-	"github.com/lazarok09/go-blog/database"
+	"github.com/lazarok09/go-blog/controllers/posts"
+	"github.com/lazarok09/go-blog/controllers/settings"
 )
 
 func InitRoutes() {
 
 	http.HandleFunc("/posts", func(w http.ResponseWriter, r *http.Request) {
-		result := database.Connect()
-
-		response, err := json.Marshal(result)
-
-		if err != nil {
-			w.Write([]byte("An error occured when marshall the results from database"))
-			return
-		}
-		w.Write(response)
-
+		posts.Handler(w, r)
+	})
+	http.HandleFunc("/settings", func(w http.ResponseWriter, r *http.Request) {
+		settings.Handler(w, r)
 	})
 
 	fmt.Println("Listen server at port 6000")
