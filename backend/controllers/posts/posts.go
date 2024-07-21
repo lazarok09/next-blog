@@ -18,16 +18,22 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	postsCollection := database.Collection("posts")
 
-	var result posts.Post
+	var results []posts.Post
 
 	filter := bson.D{}
 
-	err := postsCollection.FindOne(ctx, filter).Decode(&result)
+	cursor, err := postsCollection.Find(ctx, filter)
 	if err != nil {
 		w.Write([]byte("An error occured when try to find one result"))
+		return
 	}
 
-	response, err := json.Marshal(result)
+	if err = cursor.All(ctx, &results); err != nil {
+		w.Write([]byte("An error occured when try to iterate over results"))
+		return
+	}
+
+	response, err := json.Marshal(results)
 
 	defer cancel()
 	if err != nil {
