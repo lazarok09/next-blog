@@ -13,7 +13,7 @@ const Route string = "/posts"
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 
-	database, ctx, disconnectOnDefer := database.Connect()
+	database, ctx, disconnectOnDefer, cancel := database.Connect()
 	defer disconnectOnDefer()
 
 	postsCollection := database.Collection("posts")
@@ -22,15 +22,18 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	filter := bson.D{}
 
-	postsCollection.FindOne(*ctx, filter).Decode(&result)
+	err := postsCollection.FindOne(ctx, filter).Decode(&result)
+	if err != nil {
+		w.Write([]byte("An error occured when try to find one result"))
+	}
 
 	response, err := json.Marshal(result)
 
+	defer cancel()
 	if err != nil {
 		w.Write([]byte("An error occured when marshall the results from database"))
 		return
 	}
-
 	w.Write(response)
 
 }
