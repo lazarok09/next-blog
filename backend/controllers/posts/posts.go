@@ -3,6 +3,7 @@ package posts
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"github.com/lazarok09/go-blog/database"
 	"github.com/lazarok09/go-blog/models/posts"
@@ -20,17 +21,49 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	var results []posts.Post
 
+	query := r.URL.Query()
+	var limitLen int
+	if query.Has("limit") {
+		limitC, err := strconv.ParseInt(query.Get("limit"), 10, 64)
+
+		if err != nil {
+			w.Write([]byte("An error occured when try to get limit or parse it to int8"))
+		}
+		limitLen = int(limitC)
+	}
+
 	filter := bson.D{}
 
 	cursor, err := postsCollection.Find(ctx, filter)
+
 	if err != nil {
 		w.Write([]byte("An error occured when try to find one result"))
 		return
 	}
 
-	if err = cursor.All(ctx, &results); err != nil {
-		w.Write([]byte("An error occured when try to iterate over results"))
-		return
+	if limitLen >= 1 {
+		for i := 0; i <= limitLen; i++ {
+			var result posts.Post
+			cursor.Next(ctx)
+			if err := cursor.Decode(&result); err != nil {
+				w.Write([]byte("An error occured when try to decode results"))
+				break
+			}
+			results = append(results, result)
+			continue
+
+		}
+
+		if err := cursor.Err(); err != nil {
+			w.Write([]byte("An error occured inside the database cursor iterator"))
+			return
+		}
+
+	} else {
+		if err = cursor.All(ctx, &results); err != nil {
+			w.Write([]byte("An error occured inside cursor all iteration"))
+
+		}
 	}
 
 	response, err := json.Marshal(results)
