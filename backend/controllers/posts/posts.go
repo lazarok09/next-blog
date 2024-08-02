@@ -3,10 +3,10 @@ package posts
 import (
 	"encoding/json"
 	"net/http"
-	"strconv"
 
 	"github.com/lazarok09/go-blog/database"
 	"github.com/lazarok09/go-blog/models/posts"
+	"github.com/lazarok09/go-blog/odm"
 	"go.mongodb.org/mongo-driver/bson"
 )
 
@@ -21,17 +21,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	var results []posts.Post
 
-	query := r.URL.Query()
-	var limitLen int
-	if query.Has("limit") {
-		limitC, err := strconv.ParseInt(query.Get("limit"), 10, 64)
-
-		if err != nil {
-			w.Write([]byte("An error occured when try to get limit or parse it to int8"))
-		}
-		limitLen = int(limitC)
-	}
-
 	filter := bson.D{}
 
 	cursor, err := postsCollection.Find(ctx, filter)
@@ -41,10 +30,18 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if limitLen >= 1 {
-		for i := 0; i <= limitLen; i++ {
+	limit, err := odm.GetLimitFromQuery("limit", r)
+
+	if err != nil {
+		w.Write([]byte("An error occured when try to convert the query"))
+		return
+	}
+
+	if limit >= 1 {
+		for i := 0; i <= limit; i++ {
 			var result posts.Post
 			cursor.Next(ctx)
+
 			if err := cursor.Decode(&result); err != nil {
 				w.Write([]byte("An error occured when try to decode results"))
 				break
@@ -74,5 +71,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Write(response)
+	defer cursor.Close(ctx)
 
 }
