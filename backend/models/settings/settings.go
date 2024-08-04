@@ -5,7 +5,7 @@ import (
 )
 
 type MenuLink struct {
-	Id        primitive.ObjectID `bson:"_id"`
+	ID        primitive.ObjectID `bson:"_id"`
 	Kind      string             `bson:"kind"`
 	Ref       primitive.ObjectID `bson:"ref"`
 	CreatedAt primitive.DateTime `bson:"createdAt"`
@@ -15,7 +15,7 @@ type MenuLink struct {
 }
 
 type Settings struct {
-	Id              primitive.ObjectID `bson:"_id"`
+	ID              primitive.ObjectID `bson:"_id"`
 	Published_At    primitive.DateTime `bson:"published_at"`
 	BlogDescription string             `bson:"blogDescription"`
 	BlogName        string             `bson:"blogName"`

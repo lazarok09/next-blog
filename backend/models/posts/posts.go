@@ -3,7 +3,7 @@ package posts
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Post struct {
-	Id            primitive.ObjectID   `bson:"_id"`
+	ID            primitive.ObjectID   `bson:"_id"`
 	AllowComments bool                 `bson:"allowComments"`
 	Tags          []primitive.ObjectID `bson:"tags"`
 	Categories    []primitive.ObjectID `bson:"categories"`

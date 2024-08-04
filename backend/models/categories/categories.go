@@ -3,7 +3,7 @@ package categories
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type Category struct {
-	Id          primitive.ObjectID `bson:"_id"`
+	ID          primitive.ObjectID `bson:"_id"`
 	DisplayName string             `bson:"displayName"`
 	Slug        string             `bson:"slug"`
 	PublishedAt primitive.DateTime `bson:"published_at"`

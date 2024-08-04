@@ -11,6 +11,7 @@ import (
 	"github.com/lazarok09/go-blog/controllers/posts"
 	"github.com/lazarok09/go-blog/controllers/settings"
 	"github.com/lazarok09/go-blog/controllers/tags"
+	"github.com/lazarok09/go-blog/controllers/upload_file"
 )
 
 func InitRoutes() {
@@ -33,7 +34,10 @@ func InitRoutes() {
 	http.HandleFunc("/components_menu_menu_links", func(w http.ResponseWriter, r *http.Request) {
 		components_menu_menu_links.Handler(w, r)
 	})
+	http.HandleFunc("/upload_file", func(w http.ResponseWriter, r *http.Request) {
+		upload_file.Handler(w, r)
+	})
 
-	fmt.Println("Listen server at port 6000")
-	log.Fatal(http.ListenAndServe(":6000", nil))
+	fmt.Println("Listen server at port 8080")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
