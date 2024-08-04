@@ -3,8 +3,8 @@ package upload_file
 import "go.mongodb.org/mongo-driver/bson/primitive"
 
 type ProviderMetadata struct {
-	PublicID     string `json:"public_id"`
-	ResourceType string `json:"resource_type"`
+	PublicID     string `bson:"public_id"`
+	ResourceType string `bson:"resource_type"`
 }
 type Image struct {
 	Name   string  `bson:"name"`
