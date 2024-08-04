@@ -7,6 +7,7 @@ import (
 
 	"github.com/lazarok09/go-blog/controllers/authors"
 	"github.com/lazarok09/go-blog/controllers/categories"
+	"github.com/lazarok09/go-blog/controllers/components_menu_menu_links"
 	"github.com/lazarok09/go-blog/controllers/posts"
 	"github.com/lazarok09/go-blog/controllers/settings"
 	"github.com/lazarok09/go-blog/controllers/tags"
@@ -28,6 +29,9 @@ func InitRoutes() {
 	})
 	http.HandleFunc("/tags", func(w http.ResponseWriter, r *http.Request) {
 		tags.Handler(w, r)
+	})
+	http.HandleFunc("/components_menu_menu_links", func(w http.ResponseWriter, r *http.Request) {
+		components_menu_menu_links.Handler(w, r)
 	})
 
 	fmt.Println("Listen server at port 6000")
