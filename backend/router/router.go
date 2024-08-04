@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/lazarok09/go-blog/controllers/authors"
+	"github.com/lazarok09/go-blog/controllers/categories"
 	"github.com/lazarok09/go-blog/controllers/posts"
 	"github.com/lazarok09/go-blog/controllers/settings"
 )
@@ -20,6 +21,9 @@ func InitRoutes() {
 	})
 	http.HandleFunc("/authors", func(w http.ResponseWriter, r *http.Request) {
 		authors.Handler(w, r)
+	})
+	http.HandleFunc("/categories", func(w http.ResponseWriter, r *http.Request) {
+		categories.Handler(w, r)
 	})
 
 	fmt.Println("Listen server at port 6000")
