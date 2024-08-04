@@ -2,7 +2,7 @@ import { PostProps } from "../components/Post";
 import { PostTag } from "./Tags";
 
 export type PostStrapi = PostProps & {
-  tags: PostTag[];
-  slug: string;
-  allowComments: boolean;
+  Tags: PostTag[];
+  Slug: string;
+  AllowComments: boolean;
 };

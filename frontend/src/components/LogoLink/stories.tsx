@@ -28,5 +28,5 @@ export const TextOnly: Story<LogoLinkProps> = (args) => {
   );
 };
 TextOnly.args = {
-  srcImage: "",
+  SrcImage: "",
 };

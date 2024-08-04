@@ -4,30 +4,30 @@ import { PostContainer } from "../PostContainer";
 import * as Styled from "./styles";
 
 export type PostProps = ArticleHeaderProps & {
-  content: string;
+  Content: string;
 };
 
 export const Post = ({
-  title,
-  author,
-  categories,
-  content,
-  cover,
-  createdAt,
-  excerpt,
-  id,
+  Title: title,
+  Author: author,
+  Categories: categories,
+  Content: content,
+  Cover: cover,
+  CreatedAt: createdAt,
+  Excerpt: excerpt,
+  ID: id,
 }: PostProps) => {
   return (
     <Styled.Wrapper>
       <PostContainer size="max">
         <ArticleHeader
-          author={author}
-          categories={categories}
-          title={title}
-          excerpt={excerpt}
-          id={id}
-          cover={cover}
-          createdAt={createdAt}
+          Author={author}
+          Categories={categories}
+          Title={title}
+          Excerpt={excerpt}
+          ID={id}
+          Cover={cover}
+          CreatedAt={createdAt}
         />
         <PostContainer size="content">
           <HtmlContent html={content} />

@@ -6,19 +6,19 @@ import { MenuLink } from "../MenuLink";
 import * as Styled from "./styles";
 
 export type MenuPropsLinks = {
-  id: string;
-  link: string;
-  newTab?: boolean;
-  text: string;
+  ID: string;
+  Link: string;
+  NewTab?: boolean;
+  Text: string;
 };
 
 export type MenuProps = {
-  links: MenuPropsLinks[];
-  blogName: string;
-  logo: string;
+  Links: MenuPropsLinks[];
+  BlogName: string;
+  Logo: string;
 };
 
-export const Menu = ({ links = [], blogName, logo }: MenuProps) => {
+export const Menu = ({ Links: links = [], BlogName: blogName, Logo: logo }: MenuProps) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const handleOpenCloseMenu = (event: React.MouseEvent) => {
     event.preventDefault();
@@ -41,12 +41,12 @@ export const Menu = ({ links = [], blogName, logo }: MenuProps) => {
       <Styled.Wrapper menuVisible={menuVisible} aria-hidden={!menuVisible}>
         <Styled.Nav>
           <Styled.Logo>
-            <LogoLink link="/" text={blogName} srcImage={logo} />
+            <LogoLink Link="/" Text={blogName} SrcImage={logo}  />
           </Styled.Logo>
 
           {links.map((link) => (
-            <MenuLink key={link.id} link={link.link} newTab={link.newTab}>
-              {link.text}
+            <MenuLink key={link.ID} Link={link.Link} NewTab={link.NewTab}>
+              {link.Text}
             </MenuLink>
           ))}
         </Styled.Nav>

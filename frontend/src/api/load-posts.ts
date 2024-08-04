@@ -1,8 +1,12 @@
-import config from "../config";
-import { request } from "graphql-request";
-import { GRAPHQL_QUERY } from "../graphql/queries";
+import { ComponentsMenuLink, LogoLinkProps } from "../components/LogoLink";
+import { MenuLinkProps } from "../components/MenuLink";
+import { Author } from "../shared-types/Author";
+import { Category } from "../shared-types/category";
+import { MetaData } from "../shared-types/metadata";
 import { PostStrapi } from "../shared-types/post-strapi";
 import { SettingsStrapi } from "../shared-types/settings-strapi";
+import { StrapiImage } from "../shared-types/StrapiImage";
+import { PostTag } from "../shared-types/Tags";
 
 export type LoadPostsVariables = {
   categorySlug?: string;
@@ -14,7 +18,7 @@ export type LoadPostsVariables = {
   start?: number;
   limit?: number;
 };
-
+const BASE_URL = "http://localhost:8080";
 export type StrapiPostAndSettings = {
   setting: SettingsStrapi;
   posts: PostStrapi[];
@@ -28,11 +32,131 @@ export const defaultLoadPostsVariables: LoadPostsVariables = {
 export const loadPosts = async (
   variables: LoadPostsVariables = {}
 ): Promise<StrapiPostAndSettings> => {
-  const response = await fetch(":6000/posts");
+  const [posts, settings, uploadedFiles, tags, categories, authors, links] =
+    await Promise.all([
+      getPosts(),
+      getSettings(),
+      getUploadedFiles(),
+      getTags(),
+      getCategories(),
+      getAuthors(),
+      getLinks(),
+    ]);
 
-  const data = response.json();
+  // at the graphQL a join was made by the api
+  const logoId = settings.Logo as any;
 
-  console.log("🚀 ~ data:", data);
+  const logoObj = uploadedFiles.find((file) => file.ID === logoId);
 
-  return data;
+  settings.Logo = logoObj;
+
+  // upload settings menu links
+
+  const settingsMenuLinks = settings.MenuLink.filter((menuLink) => {
+    return links.find((link) => link.ID === menuLink.ID);
+  });
+
+  settings.MenuLink = settingsMenuLinks;
+
+  posts.forEach((post) => {
+    const tagId = post.Tags as any;
+
+    post.Tags = tags.filter((tag) => (tag.ID = tagId));
+  });
+  posts.forEach((post) => {
+    const categoryId = post.Categories as any;
+
+    post.Categories = categories.filter(
+      (category) => (category.ID = categoryId)
+    );
+  });
+
+  posts.forEach((post) => {
+    const authorId = post.Author as any;
+
+    post.Author = authors.find((author) => (author.ID = authorId));
+  });
+
+  posts.forEach((post) => {
+    const coverId = post.Cover as any;
+
+    post.Cover = uploadedFiles.find(
+      (uploadedFile) => (uploadedFile.ID = coverId)
+    );
+  });
+
+  return { posts: posts, setting: settings };
 };
+
+async function getSettings(): Promise<SettingsStrapi> {
+  const responseSettings = await fetch(`${BASE_URL}/settings`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+  const settings = await responseSettings.json();
+  return settings;
+}
+
+async function getPosts(): Promise<PostStrapi[]> {
+  const response = await fetch(`${BASE_URL}/posts`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+
+  const posts = await response.json();
+  return posts;
+}
+async function getUploadedFiles(): Promise<StrapiImage[]> {
+  const filesUploadedResponse = await fetch(`${BASE_URL}/upload_file`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+  const filesUploaded = await filesUploadedResponse.json();
+  return filesUploaded;
+}
+async function getTags(): Promise<PostTag[]> {
+  const response = await fetch(`${BASE_URL}/tags`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+  const result = await response.json();
+  return result;
+}
+async function getCategories(): Promise<Category[]> {
+  const response = await fetch(`${BASE_URL}/categories`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+  const result = await response.json();
+  return result;
+}
+async function getAuthors(): Promise<Author[]> {
+  const response = await fetch(`${BASE_URL}/authors`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+  const result = await response.json();
+  return result;
+}
+async function getLinks(): Promise<ComponentsMenuLink[]> {
+  const response = await fetch(`${BASE_URL}/components_menu_menu_links`, {
+    headers: {
+      Accept: "application/json",
+    },
+    method: "GET",
+  });
+  const result = await response.json();
+  return result;
+}

@@ -4,18 +4,18 @@ import { Heading } from "../Heading";
 import * as Styled from "./styles";
 
 export type PostCardProps = {
-  id: string;
-  title: string;
-  cover: StrapiImage;
-  excerpt: string;
-  slug: string;
+  ID: string;
+  Title: string;
+  Cover: StrapiImage;
+  Excerpt: string;
+  Slug: string;
 };
-export const PostCard = ({ title, cover, excerpt, slug }: PostCardProps) => {
+export const PostCard = ({ Title: title, Cover: cover, Excerpt: excerpt, Slug: slug }: PostCardProps) => {
   return (
     <Styled.Wrapper>
       <Link href={`/post/${slug}`}>
         <a>
-          <Styled.Cover src={cover.url} alt={title} />
+          <Styled.Cover src={cover.Url} alt={title} />
         </a>
       </Link>
 

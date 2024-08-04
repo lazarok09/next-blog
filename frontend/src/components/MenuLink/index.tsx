@@ -3,11 +3,15 @@ import Link from "next/link";
 
 export type MenuLinkProps = {
   children: React.ReactNode;
-  link: string;
-  newTab?: boolean;
+  Link: string;
+  NewTab?: boolean;
 };
 
-export const MenuLink = ({ children, link, newTab = false }: MenuLinkProps) => {
+export const MenuLink = ({
+  children,
+  Link: link,
+  NewTab: newTab = false,
+}: MenuLinkProps) => {
   const target = newTab ? "_blank" : "_self";
 
   const nextLink = link.match(/^\//) ? true : false;

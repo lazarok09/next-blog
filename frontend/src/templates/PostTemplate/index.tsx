@@ -18,44 +18,44 @@ export const PostTemplate = ({ settings, post }: PostTemplateProps) => {
     <BaseTemplate settings={settings}>
       <Head>
         <title>
-          {settings.blogName} | {post.title}
+          {settings.BlogName} | {post.Title}
         </title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta
           property="og:image"
-          content={encodeURIComponent(post.cover.url)}
+          content={encodeURIComponent(post.Cover.Url)}
         />
-        <link rel="image_src" href={encodeURIComponent(post.cover.url)} />
+        <link rel="image_src" href={encodeURIComponent(post.Cover.Url)} />
         <meta
           property="og:title"
-          content={`${settings.blogName} ${post.title}`}
+          content={`${settings.BlogName} ${post.Title}`}
         />
 
-        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:description" content={post.Excerpt} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`${config.url}/post/${post.slug}`} />
-        <meta property="og:site_name" content={settings.blogName} />
+        <meta property="og:url" content={`${config.url}/post/${post.Slug}`} />
+        <meta property="og:site_name" content={settings.BlogName} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={`${config.url}/`} />
-        <link rel={"canonical"} href={`${config.url}/post/${post.slug}`} />
+        <link rel={"canonical"} href={`${config.url}/post/${post.Slug}`} />
 
-        <meta name="twitter:title" content={`${post.title}`} />
-        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:title" content={`${post.Title}`} />
+        <meta name="twitter:description" content={post.Excerpt} />
         <meta
           name="twitter:image"
-          content={encodeURIComponent(post.cover.url)}
+          content={encodeURIComponent(post.Cover.Url)}
         />
       </Head>
       <Post {...post} />
       <Styled.TagsContainer>
-        <PostTags tags={post.tags} />
+        <PostTags tags={post.Tags} />
       </Styled.TagsContainer>
       <Comments
-        title={post.title}
-        slug={post.slug}
-        id={post.id}
-        allowComments={post.allowComments}
+        title={post.Title}
+        slug={post.Slug}
+        id={post.ID}
+        allowComments={post.AllowComments}
       />
     </BaseTemplate>
   );

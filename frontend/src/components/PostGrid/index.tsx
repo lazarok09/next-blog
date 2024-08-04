@@ -14,7 +14,7 @@ export const PostGrid = ({ posts = [] }: PostGridProps) => {
       <Styled.Grid>
         {posts.length > 0 &&
           posts.map((post) => (
-            <PostCard key={`post-card-${post.id}`} {...post} />
+            <PostCard key={`post-card-${post.ID}`} {...post} />
           ))}
       </Styled.Grid>
     </Styled.Wrapper>

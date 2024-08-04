@@ -18,9 +18,9 @@ export const Header = ({
   return (
     <Styled.Wrapper>
       <LogoLink
-        link="/"
-        srcImage={decodeURIComponent(logo)}
-        text={`${blogName} - ${blogDescription}`}
+        Link="/"
+        SrcImage={decodeURIComponent(logo)}
+        Text={`${blogName} - ${blogDescription}`}
       />
 
       {showText && (

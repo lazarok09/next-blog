@@ -18,18 +18,18 @@ export default function CategoryPage({
   if (router.isFallback) {
     return <h1>Loading...</h1>;
   }
-  const categoryForThistPost = posts[0].categories.filter((category) => {
-    return category.slug === router.query.slug;
+  const categoryForThistPost = posts[0].Categories.filter((category) => {
+    return category.Slug === router.query.slug;
   });
-  const { displayName: categoryName } = categoryForThistPost[0];
+  const { DisplayName: categoryName } = categoryForThistPost[0];
 
   return (
     <>
       <Head>
         <title>
-          Category {categoryName} - {setting.blogName}
+          Category {categoryName} - {setting.BlogName}
         </title>
-        <meta name="description" content={setting.blogDescription} />
+        <meta name="description" content={setting.BlogDescription} />
       </Head>
       <PostsTemplate posts={posts} settings={setting} variables={variables} />
     </>

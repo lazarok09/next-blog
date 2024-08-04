@@ -7,7 +7,7 @@ const props: MenuProps = mock;
 
 describe("<Menu />", () => {
   it("should render button link", () => {
-    renderTheme(<Menu {...props} links={undefined} />);
+    renderTheme(<Menu {...props} Links={undefined} />);
     const buttonLink = screen.getByRole("link", { name: "Open or close menu" });
     const openMenuIcon = screen.getByLabelText("Open menu");
 
@@ -36,7 +36,7 @@ describe("<Menu />", () => {
     // verify if all the links are on the screen but without the home logo link.
     expect(
       screen.getByRole("navigation").querySelectorAll('a:not([href="/"])')
-    ).toHaveLength(mock.links.length);
+    ).toHaveLength(mock.Links.length);
 
     // what i expect if the menu icon is clicked again
     fireEvent.click(buttonLink);

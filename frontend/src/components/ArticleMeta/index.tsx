@@ -5,15 +5,15 @@ import { formatDate } from "../../utils/formatDate";
 import * as Styled from "./styles";
 
 export type ArticleMetaProps = {
-  createdAt: string;
-  author?: Author;
-  categories?: Category[];
+  CreatedAt: string;
+  Author?: Author;
+  Categories?: Category[];
 };
 
 export const ArticleMeta = ({
-  createdAt,
-  author = undefined,
-  categories = [],
+  CreatedAt: createdAt,
+  Author: author = undefined,
+  Categories: categories = [],
 }: ArticleMetaProps) => {
   return (
     <Styled.Wrapper>
@@ -21,8 +21,8 @@ export const ArticleMeta = ({
         {typeof author != "undefined" && author && (
           <>
             <span>Por </span>
-            <Link href={`/author/${author.slug}`}>
-              <a>{author.displayName}</a>
+            <Link href={`/author/${author.Slug}`}>
+              <a>{author.DisplayName}</a>
             </Link>
             <span className={"separetor"}> | </span>
           </>
@@ -35,9 +35,9 @@ export const ArticleMeta = ({
 
             <span className={"categories"}>
               {categories.map((category) => (
-                <span key={`article-meta-cat-${category.id}`}>
-                  <Link href={`/category/${category.slug}`}>
-                    <a>{category.displayName}</a>
+                <span key={`article-meta-cat-${category.ID}`}>
+                  <Link href={`/category/${category.Slug}`}>
+                    <a>{category.DisplayName}</a>
                   </Link>
                 </span>
               ))}

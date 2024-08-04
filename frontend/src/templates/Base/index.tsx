@@ -17,6 +17,7 @@ export type BaseTemplateProps = {
   children: React.ReactNode;
 };
 export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
+  console.log("🚀 ~ BaseTemplate ~ settings:", settings)
   const router = useRouter();
   const [searchValue, setSearchValue] = useState(router?.query.q || "");
   const [searchDisabled, setSearchDisabled] = useState(true);
@@ -63,49 +64,49 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
     <Styled.Wrapper>
       <Head>
         <title>
-          {settings.blogName} | {settings.blogDescription}
+          {settings.BlogName} | {settings.BlogDescription}
         </title>
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta
           property="og:image"
-          content={encodeURIComponent(settings.logo.url)}
+          content={encodeURIComponent(settings.Logo.Url)}
         />
-        <link rel="image_src" href={encodeURIComponent(settings.logo.url)} />
+        <link rel="image_src" href={encodeURIComponent(settings.Logo.Url)} />
         <meta
           property="og:title"
-          content={`${settings.blogName} ${settings.blogDescription}`}
+          content={`${settings.BlogName} ${settings.BlogDescription}`}
         />
 
-        <meta property="og:description" content={settings.blogDescription} />
+        <meta property="og:description" content={settings.BlogDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`${config.url}/`} />
-        <meta property="og:site_name" content={settings.blogName} />
+        <meta property="og:site_name" content={settings.BlogName} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={`${config.url}/`} />
         <link rel={"canonical"} href={`${config.url}/`} />
 
         <meta
           name="twitter:title"
-          content={`${settings.blogName} ${config.defaultSlug}`}
+          content={`${settings.BlogName} ${config.defaultSlug}`}
         />
-        <meta name="twitter:description" content={settings.blogDescription} />
+        <meta name="twitter:description" content={settings.BlogDescription} />
         <meta
           name="twitter:image"
-          content={encodeURIComponent(settings.logo.url)}
+          content={encodeURIComponent(settings.Logo.Url)}
         />
       </Head>
       <ToggleTheme />
       <Menu
-        links={settings.menuLink}
-        blogName={settings.blogName}
-        logo={encodeURIComponent(settings.logo.url)}
+        Links={settings.MenuLink}
+        BlogName={settings.BlogName}
+        Logo={encodeURIComponent(settings.Logo.Url)}
       />
       <Styled.HeaderContainer>
         <Header
-          blogName={settings.blogName}
-          blogDescription={settings.blogDescription}
-          logo={encodeURIComponent(settings.logo.url)}
+          blogName={settings.BlogName}
+          blogDescription={settings.BlogDescription}
+          logo={encodeURIComponent(settings.Logo.Url)}
         />
       </Styled.HeaderContainer>
 
@@ -128,7 +129,7 @@ export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
       </Styled.SearchContainer>
       <Styled.ContentContainer>{children}</Styled.ContentContainer>
       <Styled.FooterContainer>
-        <Footer footerHtml={settings.text} />
+        <Footer footerHtml={settings.Text} />
       </Styled.FooterContainer>
       <GoToTop />
     </Styled.Wrapper>

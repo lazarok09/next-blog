@@ -23,9 +23,9 @@ export default function AuthorPage({
     <>
       <Head>
         <title>
-          Author {post.author?.displayName ?? ""} - {setting.blogName}
+          Author {post.Author?.DisplayName ?? ""} - {setting.BlogName}
         </title>
-        <meta name="description" content={setting.blogDescription} />
+        <meta name="description" content={setting.BlogDescription} />
       </Head>
       <PostsTemplate posts={posts} settings={setting} variables={variables} />
     </>

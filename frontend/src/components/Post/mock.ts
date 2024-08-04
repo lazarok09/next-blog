@@ -5,11 +5,11 @@ const { title, excerpt, cover, content, author, categories, createdAt } =
   data.posts[0];
 
 export default {
-  title,
-  excerpt,
-  cover,
-  content,
-  author,
-  categories,
-  createdAt,
+  Title: title,
+  Excerpt: excerpt,
+  Cover: cover,
+  Content: content,
+  Author: author,
+  Categories: categories,
+  CreatedAt: createdAt,
 } as PostProps;

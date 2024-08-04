@@ -15,9 +15,9 @@ export default function PostPage({ posts, setting }: StrapiPostAndSettings) {
     <>
       <Head>
         <title>
-          {post.title} - {setting.blogName}
+          {post.Title} - {setting.BlogName}
         </title>
-        <meta name="description" content={post.excerpt} />
+        <meta name="description" content={post.Excerpt} />
       </Head>
       <PostTemplate settings={setting} post={post} />
     </>
@@ -30,8 +30,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   try {
     // load only 10 first posts
     data = await loadPosts();
+    console.log("🚀 ~ constgetStaticPaths:GetStaticPaths= ~ data:", data)
     paths = data.posts.map((post) => ({
-      params: { slug: post.slug },
+      params: { slug: post.Slug },
     }));
   } catch (e) {
     data = null;
@@ -53,6 +54,7 @@ export const getStaticProps: GetStaticProps<StrapiPostAndSettings> = async (
 
   try {
     data = await loadPosts({ postSlug: ctx.params.slug as string });
+    console.log("🚀 ~ data:", data)
   } catch (e) {
     data = null;
   }

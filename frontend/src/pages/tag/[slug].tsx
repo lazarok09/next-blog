@@ -18,18 +18,18 @@ export default function TagPage({
   if (router.isFallback) {
     return <h1>Loading...</h1>;
   }
-  const tagsForThisPost = posts[0].tags.filter((tag) => {
-    return tag.slug === router.query.slug;
+  const tagsForThisPost = posts[0].Tags.filter((tag) => {
+    return tag.Slug === router.query.slug;
   });
-  const { displayName: tagName } = tagsForThisPost[0];
+  const { DisplayName: tagName } = tagsForThisPost[0];
 
   return (
     <>
       <Head>
         <title>
-          Tag {tagName} - {setting.blogName}
+          Tag {tagName} - {setting.BlogName}
         </title>
-        <meta name="description" content={setting.blogDescription} />
+        <meta name="description" content={setting.BlogDescription} />
       </Head>
       <PostsTemplate posts={posts} settings={setting} variables={variables} />
     </>

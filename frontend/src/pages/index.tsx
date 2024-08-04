@@ -12,13 +12,14 @@ export default function Index({
   setting,
   variables,
 }: StrapiPostAndSettings) {
+  console.log("🚀 ~ setting:", setting);
   return (
     <>
       <Head>
         <title>
-          {setting.blogName} - {setting.blogDescription}
+          {setting.BlogName} - {setting.BlogDescription}
         </title>
-        <meta name="description" content={setting.blogDescription} />
+        <meta name="description" content={setting.BlogDescription} />
       </Head>
       <PostsTemplate posts={posts} settings={setting} variables={variables} />
     </>
@@ -31,7 +32,9 @@ export const getStaticProps: GetStaticProps<
 
   try {
     data = await loadPosts();
+    console.log("🚀 ~ >= ~ data:", data)
   } catch (e) {
+    console.error("🚀 ~ >= ~ e:", e)
     data = null;
   }
 

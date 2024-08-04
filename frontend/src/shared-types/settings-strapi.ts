@@ -2,10 +2,10 @@ import { MenuPropsLinks } from "../components/Menu";
 import { StrapiImage } from "./StrapiImage";
 
 export type SettingsStrapi = {
-  id: string;
-  blogName: string;
-  blogDescription: string;
-  logo: StrapiImage;
-  menuLink: MenuPropsLinks[];
-  text: string;
+  ID: string;
+  BlogName: string;
+  BlogDescription: string;
+  Logo: StrapiImage;
+  MenuLink: MenuPropsLinks[];
+  Text: string;
 };

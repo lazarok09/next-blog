@@ -7,7 +7,7 @@ export default {
   component: ArticleMeta,
   args: mock,
   argTypes: {
-    createdAt: {
+    CreatedAt: {
       control: {
         type: "date",
       },
@@ -25,21 +25,21 @@ export const Template: Story<ArticleMetaProps> = (args) => {
 export const NoCategories: Story<ArticleMetaProps> = (args) => {
   return (
     <div>
-      <ArticleMeta {...args} categories={undefined} />
+      <ArticleMeta {...args} Categories={undefined} />
     </div>
   );
 };
 export const NoAuthor: Story<ArticleMetaProps> = (args) => {
   return (
     <div>
-      <ArticleMeta {...args} author={undefined} />
+      <ArticleMeta {...args} Author={undefined} />
     </div>
   );
 };
 export const NoAuthorAndCategories: Story<ArticleMetaProps> = (args) => {
   return (
     <div>
-      <ArticleMeta {...args} author={undefined} categories={undefined} />
+      <ArticleMeta {...args} Author={undefined} Categories={undefined} />
     </div>
   );
 };

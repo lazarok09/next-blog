@@ -1,23 +1,23 @@
 import { ArticleMetaProps } from ".";
 
 export default {
-  createdAt: "2021-03-02T15:16:09.246+00:00",
-  author: {
-    id: "aowea3i902103102",
+  CreatedAt: "2021-03-02T15:16:09.246+00:00",
+  Author: {
+    ID: "aowea3i902103102",
 
-    slug: "lazaro-souza",
-    displayName: "Lázaro Souza",
+    Slug: "lazaro-souza",
+    DisplayName: "Lázaro Souza",
   },
-  categories: [
+  Categories: [
     {
-      id: "123125129120",
-      displayName: "JS",
-      slug: "javascript",
+      ID: "123125129120",
+      DisplayName: "JS",
+      Slug: "javascript",
     },
     {
-      id: "123125129120125512",
-      displayName: "Tech",
-      slug: "tech",
+      ID: "123125129120125512",
+      DisplayName: "Tech",
+      Slug: "tech",
     },
   ],
 } as ArticleMetaProps;

@@ -19,9 +19,9 @@ export default function SearchPage({
     <>
       <Head>
         <title>
-          Pesquisa {router.query.q} - {setting.blogName}
+          Pesquisa {router.query.q} - {setting.BlogName}
         </title>
-        <meta name="description" content={setting.blogDescription} />
+        <meta name="description" content={setting.BlogDescription} />
       </Head>
       <PostsTemplate posts={posts} settings={setting} variables={variables} />
     </>
