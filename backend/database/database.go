@@ -12,7 +12,7 @@ import (
 
 // mongodb+srv://lazarok09:<password>@cluster0.9bo4v.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 
-func Connect() (*mongo.Database, context.Context, func(), func()) {
+func Connect() (db *mongo.Database, ctx context.Context, disconnect func(), cancelTimeout func()) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(config.MONGODB_CONNECT_STR))

@@ -10,8 +10,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-const Route string = "/settings"
-
 func Handler(w http.ResponseWriter, r *http.Request) {
 
 	database, ctx, disconnectOnDefer, cancel := database.Connect()
