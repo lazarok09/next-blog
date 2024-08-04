@@ -30,12 +30,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	limit, err := odm.GetLimitFromQuery("limit", r)
-
-	if err != nil {
-		w.Write([]byte("An error occured when try to convert the query"))
-		return
-	}
+	limit, _ := odm.GetLimitFromQuery("limit", r)
 
 	if limit >= 1 {
 		for i := 0; i <= limit; i++ {

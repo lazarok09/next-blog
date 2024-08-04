@@ -9,6 +9,7 @@ import (
 	"github.com/lazarok09/go-blog/controllers/categories"
 	"github.com/lazarok09/go-blog/controllers/posts"
 	"github.com/lazarok09/go-blog/controllers/settings"
+	"github.com/lazarok09/go-blog/controllers/tags"
 )
 
 func InitRoutes() {
@@ -24,6 +25,9 @@ func InitRoutes() {
 	})
 	http.HandleFunc("/categories", func(w http.ResponseWriter, r *http.Request) {
 		categories.Handler(w, r)
+	})
+	http.HandleFunc("/tags", func(w http.ResponseWriter, r *http.Request) {
+		tags.Handler(w, r)
 	})
 
 	fmt.Println("Listen server at port 6000")
