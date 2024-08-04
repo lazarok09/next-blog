@@ -13,7 +13,7 @@ type Image struct {
 	Mime   string  `bson:"mime"`
 	Width  int32   `bson:"width"`
 	Height int32   `bson:"height"`
-	Size   float32 `bson:"size"`
+	Size   float64 `bson:"size"`
 	Path   string  `bson:"path,omitempty"`
 	Url    string  `bson:"url"`
 }
