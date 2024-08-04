@@ -5,13 +5,9 @@ import (
 )
 
 type MenuLink struct {
-	ID        primitive.ObjectID `bson:"_id"`
-	Kind      string             `bson:"kind"`
-	Ref       primitive.ObjectID `bson:"ref"`
-	CreatedAt primitive.DateTime `bson:"createdAt"`
-	UpdatedAt primitive.DateTime `bson:"updatedAt"`
-	Text      string             `bson:"text"`
-	Logo      primitive.ObjectID `bson:"logo"`
+	ID   primitive.ObjectID `bson:"_id"`
+	Kind string             `bson:"kind"`
+	Ref  primitive.ObjectID `bson:"ref"`
 }
 
 type Settings struct {
@@ -20,6 +16,10 @@ type Settings struct {
 	BlogDescription string             `bson:"blogDescription"`
 	BlogName        string             `bson:"blogName"`
 	MenuLink        []MenuLink         `bson:"menuLink"`
+	CreatedAt       primitive.DateTime `bson:"createdAt"`
+	UpdatedAt       primitive.DateTime `bson:"updatedAt"`
+	Text            string             `bson:"text"`
+	Logo            primitive.ObjectID `bson:"logo"`
 	CreatedBy       primitive.ObjectID `bson:"created_by"`
 	UpdatedBy       primitive.ObjectID `bson:"updated_by"`
 }
