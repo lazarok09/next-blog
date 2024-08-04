@@ -19,13 +19,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	var authorsResult []authors.Author
 
-	results, err := authorsCollection.Find(ctx, filter)
+	cursor, err := authorsCollection.Find(ctx, filter)
 
 	if err != nil {
 		w.Write([]byte("An error ocurred when try to find the authors collection"))
 		return
 	}
-	if results.All(ctx, &authorsResult); err != nil {
+	if cursor.All(ctx, &authorsResult); err != nil {
 		w.Write([]byte("An error ocurred when try to decode results to bson"))
 		return
 	}
