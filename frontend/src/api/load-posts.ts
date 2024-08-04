@@ -78,11 +78,12 @@ export const loadPosts = async (
   });
 
   posts.forEach((post) => {
-    const coverId = post.Cover as any;
 
-    post.Cover = uploadedFiles.find(
-      (uploadedFile) => (uploadedFile.ID = coverId)
-    );
+    const coverId: string = post.Cover as any;
+
+    const newCover =
+      uploadedFiles.find((file) => file.ID === coverId) || uploadedFiles[0];
+    post.Cover = newCover;
   });
 
   return { posts: posts, setting: settings };
