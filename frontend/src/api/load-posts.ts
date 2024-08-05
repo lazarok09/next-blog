@@ -111,11 +111,11 @@ async function getPosts(
   }
   const url = new URL(`${BASE_URL}/posts`);
 
-  if (variables.postSlug.length) {
+  if (variables?.postSlug?.length) {
     url.pathname += `/${variables.postSlug}`;
   }
 
-  const response = await fetch(`${url}?${params.toString()}`, {
+  const response = await fetch(`${url.toString()}?${params.toString()}`, {
     headers: {
       Accept: "application/json",
     },
