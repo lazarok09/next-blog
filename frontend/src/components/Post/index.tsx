@@ -17,7 +17,6 @@ export const Post = ({
   Excerpt: excerpt,
   ID: id,
 }: PostProps) => {
-  console.log("🚀 ~ Content:", content)
   return (
     <Styled.Wrapper>
       <PostContainer size="max">

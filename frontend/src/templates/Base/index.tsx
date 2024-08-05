@@ -17,7 +17,6 @@ export type BaseTemplateProps = {
   children: React.ReactNode;
 };
 export const BaseTemplate = ({ settings, children }: BaseTemplateProps) => {
-  console.log("🚀 ~ BaseTemplate ~ settings:", settings)
   const router = useRouter();
   const [searchValue, setSearchValue] = useState(router?.query.q || "");
   const [searchDisabled, setSearchDisabled] = useState(true);
