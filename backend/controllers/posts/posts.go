@@ -8,6 +8,7 @@ import (
 	"github.com/lazarok09/go-blog/models/posts"
 	"github.com/lazarok09/go-blog/odm"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 const Route string = "/posts"
@@ -23,41 +24,30 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	filter := bson.D{}
 
-	cursor, err := postsCollection.Find(ctx, filter)
+	limit, _ := odm.GetNumberFromQuery("limit", r)
+	offset, _ := odm.GetNumberFromQuery("offset", r)
+
+	ops := options.Find()
+
+	if limit >= 1 {
+		ops.SetLimit(limit)
+
+	}
+
+	if offset >= 1 {
+		ops.SetSkip(offset)
+	}
+
+	cursor, err := postsCollection.Find(ctx, filter, ops)
 
 	if err != nil {
 		w.Write([]byte("An error occured when try to find one result"))
 		return
 	}
 
-	limit, _ := odm.GetLimitFromQuery("limit", r)
-
-	if limit >= 1 {
-		for i := 0; i <= limit; i++ {
-			var result posts.Post
-			cursor.Next(ctx)
-
-			if err := cursor.Decode(&result); err != nil {
-				w.Write([]byte("An error occured when try to decode results"))
-				break
-			}
-			results = append(results, result)
-			continue
-
-		}
-
-		if err := cursor.Err(); err != nil {
-			w.Write([]byte("An error occured inside the database cursor iterator"))
-			return
-		}
-
-	} else {
-		if err = cursor.All(ctx, &results); err != nil {
-			w.Write([]byte("An error occured inside cursor all iteration"))
-
-		}
+	if err = cursor.All(ctx, &results); err != nil {
+		w.Write([]byte("An error occured inside cursor all iteration"))
 	}
-
 	response, err := json.Marshal(results)
 
 	defer cancel()

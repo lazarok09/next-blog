@@ -8,16 +8,16 @@ import (
 )
 
 // From a queryName search it using the request to bring the limit int or an error. Limit zero is the default
-func GetLimitFromQuery(queryName string, r *http.Request) (limit int, err error) {
+func GetNumberFromQuery(queryName string, r *http.Request) (limit int64, err error) {
 	query := r.URL.Query()
 
 	if query.Has(queryName) {
-		limitC, err := strconv.ParseInt(query.Get("limit"), 10, 64)
+		query, err := strconv.ParseInt(query.Get(queryName), 10, 64)
 
 		if err != nil {
 			return 0, err
 		}
-		return int(limitC), nil
+		return query, nil
 	}
 	return 0, errors.New("the provided query was not founded")
 
