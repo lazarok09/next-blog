@@ -12,7 +12,6 @@ export default function Index({
   setting,
   variables,
 }: StrapiPostAndSettings) {
-  console.log("🚀 ~ setting:", setting);
   return (
     <>
       <Head>
@@ -31,10 +30,9 @@ export const getStaticProps: GetStaticProps<
   let data = null;
 
   try {
-    data = await loadPosts();
-    console.log("🚀 ~ >= ~ data:", data)
+    data = await loadPosts({ limit: defaultLoadPostsVariables.limit });
   } catch (e) {
-    console.error("🚀 ~ >= ~ e:", e)
+    console.log("🚀 ~ >= ~ e:", e);
     data = null;
   }
 

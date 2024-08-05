@@ -44,24 +44,18 @@ exports[`<PostTags should match snapshot 1`] = `
      
     <span>
       <a
-        href="/tag/algoritmo"
-      >
-        algoritmo
-      </a>
+        href="/tag/undefined"
+      />
     </span>
     <span>
       <a
-        href="/tag/useeffect"
-      >
-        useEffect
-      </a>
+        href="/tag/undefined"
+      />
     </span>
     <span>
       <a
-        href="/tag/js"
-      >
-        js
-      </a>
+        href="/tag/undefined"
+      />
     </span>
   </p>
 </div>

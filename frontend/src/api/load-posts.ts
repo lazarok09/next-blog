@@ -1,8 +1,6 @@
 import { ComponentsMenuLink, LogoLinkProps } from "../components/LogoLink";
-import { MenuLinkProps } from "../components/MenuLink";
 import { Author } from "../shared-types/Author";
 import { Category } from "../shared-types/category";
-import { MetaData } from "../shared-types/metadata";
 import { PostStrapi } from "../shared-types/post-strapi";
 import { SettingsStrapi } from "../shared-types/settings-strapi";
 import { StrapiImage } from "../shared-types/StrapiImage";
@@ -18,7 +16,9 @@ export type LoadPostsVariables = {
   start?: number;
   limit?: number;
 };
+
 const BASE_URL = "http://localhost:8080";
+
 export type StrapiPostAndSettings = {
   setting: SettingsStrapi;
   posts: PostStrapi[];
@@ -34,7 +34,7 @@ export const loadPosts = async (
 ): Promise<StrapiPostAndSettings> => {
   const [posts, settings, uploadedFiles, tags, categories, authors, links] =
     await Promise.all([
-      getPosts(),
+      getPosts(variables),
       getSettings(),
       getUploadedFiles(),
       getTags(),
@@ -78,7 +78,6 @@ export const loadPosts = async (
   });
 
   posts.forEach((post) => {
-
     const coverId: string = post.Cover as any;
 
     const newCover =
@@ -100,8 +99,23 @@ async function getSettings(): Promise<SettingsStrapi> {
   return settings;
 }
 
-async function getPosts(): Promise<PostStrapi[]> {
-  const response = await fetch(`${BASE_URL}/posts`, {
+async function getPosts(
+  variables?: typeof defaultLoadPostsVariables
+): Promise<PostStrapi[]> {
+  const params = new URLSearchParams();
+  if (variables?.limit && variables.limit >= 1) {
+    params.append("limit", String(variables.limit));
+  }
+  if (variables.start && variables.start >= 1) {
+    params.append("offset", String(variables.start));
+  }
+  const url = new URL(`${BASE_URL}/posts`);
+
+  if (variables.postSlug.length) {
+    url.pathname += `/${variables.postSlug}`;
+  }
+
+  const response = await fetch(`${url}?${params.toString()}`, {
     headers: {
       Accept: "application/json",
     },
