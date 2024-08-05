@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"time"
 
+	"github.com/gorilla/mux"
 	"github.com/lazarok09/go-blog/controllers/authors"
 	"github.com/lazarok09/go-blog/controllers/categories"
 	"github.com/lazarok09/go-blog/controllers/components_menu_menu_links"
@@ -21,42 +23,56 @@ func insertCors(w http.ResponseWriter) {
 }
 
 func InitRoutes() {
+	r := mux.NewRouter()
 
-	http.HandleFunc("/posts", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/posts/{slug}", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
-		posts.Handler(w, r)
+		posts.BySlug(w, r)
 	})
-	http.HandleFunc("/settings", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/posts", func(w http.ResponseWriter, r *http.Request) {
+		insertCors(w)
+		posts.All(w, r)
+	})
+
+	r.HandleFunc("/settings", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
 		settings.Handler(w, r)
 	})
-	http.HandleFunc("/authors", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/authors", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
 		authors.Handler(w, r)
 	})
-	http.HandleFunc("/categories", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/categories", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
 		categories.Handler(w, r)
 	})
-	http.HandleFunc("/tags", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/tags", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
 		tags.Handler(w, r)
 	})
-	http.HandleFunc("/components_menu_menu_links", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/components_menu_menu_links", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
 		components_menu_menu_links.Handler(w, r)
 	})
-	http.HandleFunc("/upload_file", func(w http.ResponseWriter, r *http.Request) {
+	r.HandleFunc("/upload_file", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
 		upload_file.Handler(w, r)
 	})
+	srv := &http.Server{
+		Addr: "0.0.0.0:8080",
+		// Good practice to set timeouts to avoid Slowloris attacks.
+		WriteTimeout: time.Second * 15,
+		ReadTimeout:  time.Second * 15,
+		IdleTimeout:  time.Second * 60,
+		Handler:      r, // Pass our instance of gorilla/mux in.
+	}
 
 	fmt.Println("Listen server at port 8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(srv.ListenAndServe())
 }
