@@ -29,12 +29,12 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	ops := options.Find()
 
-	if limit >= 1 {
+	if limit >= 0 {
 		ops.SetLimit(limit)
 
 	}
 
-	if offset >= 1 {
+	if offset >= 0 {
 		ops.SetSkip(offset)
 	}
 
