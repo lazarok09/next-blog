@@ -37,7 +37,7 @@ export const loadPosts = async (
       getPosts(variables),
       getSettings(),
       getUploadedFiles(),
-      getTags(),
+      getTags(variables),
       getCategories(),
       getAuthors(),
       getLinks(),
@@ -61,7 +61,12 @@ export const loadPosts = async (
   posts.forEach((post) => {
     const tagId = post.Tags as any;
 
-    post.Tags = tags.filter((tag) => (tag.ID = tagId));
+    post.Tags = tags.filter((tag) => {
+      if (tagId.includes(tag.ID)) {
+        return true;
+      }
+      return false;
+    });
   });
   posts.forEach((post) => {
     const categoryId = post.Categories as any;
@@ -84,7 +89,7 @@ export const loadPosts = async (
       uploadedFiles.find((file) => file.ID === coverId) || uploadedFiles[0];
     post.Cover = newCover;
   });
-
+  console.log(posts.map((post) => post.Tags));
   return { posts: posts, setting: settings };
 };
 
@@ -135,14 +140,20 @@ async function getUploadedFiles(): Promise<StrapiImage[]> {
   const filesUploaded = await filesUploadedResponse.json();
   return filesUploaded;
 }
-async function getTags(): Promise<PostTag[]> {
-  const response = await fetch(`${BASE_URL}/tags`, {
+async function getTags(variables?: LoadPostsVariables): Promise<PostTag[]> {
+  const finalUrl = new URL(`${BASE_URL}/tags`);
+  if (variables.tagSlug?.length) {
+    finalUrl.pathname += `/${variables.tagSlug}`;
+  }
+
+  const response = await fetch(`${finalUrl.toString()}`, {
     headers: {
       Accept: "application/json",
     },
     method: "GET",
   });
   const result = await response.json();
+  console.log("🚀 ~ getTags ~ result:", result);
   return result;
 }
 async function getCategories(): Promise<Category[]> {

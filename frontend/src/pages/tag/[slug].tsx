@@ -49,6 +49,14 @@ export const getStaticProps: GetStaticProps<StrapiPostAndSettings> = async (
   const variables = { tagSlug: ctx?.params?.slug as string };
   try {
     data = await loadPosts(variables);
+
+    data.posts = data.posts.filter((post) => {
+      if (post.Tags.filter((tag) => tag.Slug === ctx?.params?.slug)?.length) {
+        console.log(post);
+        return true;
+      }
+      return false;
+    });
   } catch (e) {
     data = null;
   }
