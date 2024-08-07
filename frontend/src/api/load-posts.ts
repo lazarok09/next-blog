@@ -72,7 +72,7 @@ export const loadPosts = async (
     const categoryId = post.Categories as any;
 
     post.Categories = categories.filter(
-      (category) => (category.ID = categoryId)
+      (category) => category.ID === categoryId
     );
   });
 
@@ -108,6 +108,10 @@ async function getPosts(
   variables?: typeof defaultLoadPostsVariables
 ): Promise<PostStrapi[]> {
   const params = new URLSearchParams();
+
+  if (variables?.postSearch && variables.postSearch.length >= 1) {
+    params.append("search", String(variables.postSearch));
+  }
   if (variables?.limit && variables.limit >= 1) {
     params.append("limit", String(variables.limit));
   }
