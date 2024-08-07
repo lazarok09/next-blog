@@ -80,9 +80,11 @@ func All(w http.ResponseWriter, r *http.Request) {
 	if offset >= 0 {
 		ops.SetSkip(offset)
 	}
+	filter := bson.D{}
 
-	filter := bson.D{{
-		"$text", bson.D{{"$search", searchTerm}}}}
+	if len(searchTerm) >= 1 {
+		filter = bson.D{{"$text", bson.D{{"$search", searchTerm}}}}
+	}
 
 	cursor, err := postsCollection.Find(ctx, filter, ops)
 

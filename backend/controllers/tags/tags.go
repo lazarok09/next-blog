@@ -21,6 +21,7 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 	postsCollection := database.Collection("tags")
 
 	var result []tags.Tag
+	
 
 	vars := mux.Vars(r)
 	slug := vars["slug"]
