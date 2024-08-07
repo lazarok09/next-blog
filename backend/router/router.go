@@ -49,10 +49,16 @@ func InitRoutes() {
 
 		categories.Handler(w, r)
 	})
+
+	r.HandleFunc("/tags/{slug}", func(w http.ResponseWriter, r *http.Request) {
+		insertCors(w)
+
+		tags.BySlug(w, r)
+	})
 	r.HandleFunc("/tags", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
 
-		tags.Handler(w, r)
+		tags.All(w, r)
 	})
 	r.HandleFunc("/components_menu_menu_links", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)

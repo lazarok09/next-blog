@@ -10,6 +10,7 @@ import (
 	"github.com/lazarok09/go-blog/models/posts"
 	"github.com/lazarok09/go-blog/odm"
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
@@ -54,11 +55,18 @@ func All(w http.ResponseWriter, r *http.Request) {
 	defer disconnectOnDefer()
 
 	postsCollection := database.Collection("posts")
+	indexModel := mongo.IndexModel{
+		Keys: bson.D{{"title", "text"}},
+	}
+
+	if _, err := postsCollection.Indexes().CreateOne(ctx, indexModel); err != nil {
+		w.Write([]byte("An error occurred when creating the index for title search"))
+		return
+	}
 
 	var results []posts.Post
 
-	filter := bson.D{}
-
+	searchTerm, _ := odm.GetStringFromQuery("search", r)
 	limit, _ := odm.GetNumberFromQuery("limit", r)
 	offset, _ := odm.GetNumberFromQuery("offset", r)
 
@@ -72,6 +80,9 @@ func All(w http.ResponseWriter, r *http.Request) {
 	if offset >= 0 {
 		ops.SetSkip(offset)
 	}
+
+	filter := bson.D{{
+		"$text", bson.D{{"$search", searchTerm}}}}
 
 	cursor, err := postsCollection.Find(ctx, filter, ops)
 

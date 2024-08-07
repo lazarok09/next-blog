@@ -23,6 +23,22 @@ func GetNumberFromQuery(queryName string, r *http.Request) (limit int64, err err
 
 }
 
+// From a queryName search it using the request to bring the limit int or an error. Limit zero is the default
+func GetStringFromQuery(queryName string, r *http.Request) (searchTerm string, err error) {
+	query := r.URL.Query()
+
+	if query.Has(queryName) {
+		query := query.Get(queryName)
+
+		if err != nil {
+			return "", err
+		}
+		return query, nil
+	}
+	return "", errors.New("the provided query was not founded")
+
+}
+
 const (
 	ErrorCollectionConnect  = "An error ocurred when try to find a [placeholder] collection"
 	ErrorCollectionIterate  = "An error ocurred when try iterate the cursor of [placeholder] collection"
