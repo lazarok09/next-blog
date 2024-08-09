@@ -30,7 +30,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   try {
     // load only 10 first posts
     data = await loadPosts();
-    console.log("🚀 ~ constgetStaticPaths:GetStaticPaths= ~ data:", data)
     paths = data.posts.map((post) => ({
       params: { slug: post.Slug },
     }));
@@ -54,7 +53,6 @@ export const getStaticProps: GetStaticProps<StrapiPostAndSettings> = async (
 
   try {
     data = await loadPosts({ postSlug: ctx.params.slug as string });
-    console.log("🚀 ~ data:", data)
   } catch (e) {
     data = null;
   }

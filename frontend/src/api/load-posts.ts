@@ -51,9 +51,14 @@ export const loadPosts = async (
   settings.Logo = logoObj;
 
   // upload settings menu links
+  
+  const linksSettings = settings.MenuLink.map((m) => m.Ref);
 
-  const settingsMenuLinks = settings.MenuLink.filter((menuLink) => {
-    return links.find((link) => link.ID === menuLink.ID);
+
+  const settingsMenuLinks = links.filter((link) => {
+    if (linksSettings.includes(link.ID)) {
+      return true;
+    }
   });
 
   settings.MenuLink = settingsMenuLinks;
@@ -89,7 +94,6 @@ export const loadPosts = async (
       uploadedFiles.find((file) => file.ID === coverId) || uploadedFiles[0];
     post.Cover = newCover;
   });
-  console.log(posts.map((post) => post.Tags));
   return { posts: posts, setting: settings };
 };
 
@@ -157,7 +161,6 @@ async function getTags(variables?: LoadPostsVariables): Promise<PostTag[]> {
     method: "GET",
   });
   const result = await response.json();
-  console.log("🚀 ~ getTags ~ result:", result);
   return result;
 }
 async function getCategories(): Promise<Category[]> {
