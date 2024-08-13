@@ -26,9 +26,11 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	slug := vars["slug"]
 
-	filter := bson.D{{"slug", slug}}
+	matchStage := bson.D{{"$match", bson.D{{"slug", slug}}}}
 
-	cursor, err := postsCollection.Find(ctx, filter)
+	unionStage := bson.D{{"$unionWith", bson.D{{"coll", "tags"}}}}
+
+	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{matchStage, unionStage})
 
 	if err != nil {
 		w.Write([]byte("An error occured when try to find one result"))
