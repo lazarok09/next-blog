@@ -1,6 +1,9 @@
 package posts
 
-import "go.mongodb.org/mongo-driver/bson/primitive"
+import (
+	"github.com/lazarok09/go-blog/models/tags"
+	"go.mongodb.org/mongo-driver/bson/primitive"
+)
 
 type Post struct {
 	ID            primitive.ObjectID   `bson:"_id"`
@@ -18,4 +21,5 @@ type Post struct {
 	UpdatedBy     primitive.ObjectID   `bson:"updated_by"`
 	Author        primitive.ObjectID   `bson:"author"`
 	Cover         primitive.ObjectID   `bson:"cover"`
+	NovasTags     []tags.Tag           `bson:"novasTags"`
 }

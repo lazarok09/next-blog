@@ -2,6 +2,7 @@ package posts
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"net/http"
 
@@ -21,24 +22,27 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 
 	postsCollection := database.Collection("posts")
 
-	var result []posts.Post
+	var result []bson.M
 
 	vars := mux.Vars(r)
 	slug := vars["slug"]
 
 	matchStage := bson.D{{"$match", bson.D{{"slug", slug}}}}
+	fmt.Println(matchStage)
 
-	unionStage := bson.D{{"$unionWith", bson.D{{"coll", "tags"}}}}
+	addFieldStage := bson.D{{"$addFields", bson.D{{"novasTags", result}}}}
+	unionStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "novasTags"}}}}
+	unwindStage := bson.D{{"$unwind", bson.D{{"path", "$novasTags"}, {"preserveNullAndEmptyArrays", false}}}}
 
-	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{matchStage, unionStage})
+	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{addFieldStage, unionStage, unwindStage})
 
 	if err != nil {
-		w.Write([]byte("An error occured when try to find one result"))
+		w.Write([]byte(err.Error()))
 		return
 	}
 
 	if err = cursor.All(ctx, &result); err != nil {
-		w.Write([]byte("An error occured inside cursor all iteration"))
+		w.Write([]byte(err.Error()))
 	}
 	response, err := json.Marshal(result)
 
