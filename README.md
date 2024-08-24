@@ -73,9 +73,9 @@ I've been followed the [conventinal commits](https://www.conventionalcommits.org
 
 ## Enviroments 👾
 
-#### StoryBook
+#### StoryBook 
 
-Para rodar o ambiente do storybook você deverá digitar já dentro do projeto o comando. Após digitar o comando abaixo, será aberto no endereço http://localhost:3000 na sua máquina local a tela do StoryBook
+The storybook documentation consist in a set of components that are fullfilled with data mocks in a way that we can see how actually components were created and are binded together to form the web app.
 
 ```
 npm run storybook
