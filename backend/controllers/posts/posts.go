@@ -22,7 +22,7 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 
 	postsCollection := database.Collection("posts")
 
-	var result []bson.M
+	var result []posts.Post
 
 	vars := mux.Vars(r)
 	slug := vars["slug"]
@@ -30,11 +30,10 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 	matchStage := bson.D{{"$match", bson.D{{"slug", slug}}}}
 	fmt.Println(matchStage)
 
-	addFieldStage := bson.D{{"$addFields", bson.D{{"novasTags", result}}}}
-	unionStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "novasTags"}}}}
-	unwindStage := bson.D{{"$unwind", bson.D{{"path", "$novasTags"}, {"preserveNullAndEmptyArrays", false}}}}
+	categoriesStage := bson.D{{"$lookup", bson.D{{"from", "categories"}, {"localField", "categories"}, {"foreignField", "_id"}, {"as", "categories"}}}}
+	tagsStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "tags"}}}}
 
-	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{addFieldStage, unionStage, unwindStage})
+	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{categoriesStage, tagsStage})
 
 	if err != nil {
 		w.Write([]byte(err.Error()))
