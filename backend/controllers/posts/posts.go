@@ -2,7 +2,6 @@ package posts
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"net/http"
 
@@ -14,6 +13,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+// Promise.all([callbacks, callbacks]) - ctx global
 
 func BySlug(w http.ResponseWriter, r *http.Request) {
 
@@ -28,12 +29,11 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 	slug := vars["slug"]
 
 	matchStage := bson.D{{"$match", bson.D{{"slug", slug}}}}
-	fmt.Println(matchStage)
 
 	categoriesStage := bson.D{{"$lookup", bson.D{{"from", "categories"}, {"localField", "categories"}, {"foreignField", "_id"}, {"as", "categories"}}}}
 	tagsStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "tags"}}}}
 
-	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{categoriesStage, tagsStage})
+	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{matchStage, categoriesStage, tagsStage})
 
 	if err != nil {
 		w.Write([]byte(err.Error()))
