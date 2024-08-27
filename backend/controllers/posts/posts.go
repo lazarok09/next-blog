@@ -27,10 +27,10 @@ func BySlug(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	slug := vars["slug"]
 
-	matchStage := bson.D{{"$match", bson.D{{"slug", slug}}}}
+	matchStage := bson.D{{Key: "$match", Value: bson.D{{Key: "slug", Value: slug}}}}
 
-	categoriesStage := bson.D{{"$lookup", bson.D{{"from", "categories"}, {"localField", "categories"}, {"foreignField", "_id"}, {"as", "categories"}}}}
-	tagsStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "tags"}}}}
+	categoriesStage := bson.D{{Key: "$lookup", Value: bson.D{{Key: "from", Value: "categories"}, {Key: "localField", Value: "categories"}, {Key: "foreignField", Value: "_id"}, {Key: "as", Value: "categories"}}}}
+	tagsStage := bson.D{{Key: "$lookup", Value: bson.D{{Key: "from", Value: "tags"}, {Key: "localField", Value: "tags"}, {Key: "foreignField", Value: "_id"}, {Key: "as", Value: "tags"}}}}
 
 	cursor, err := postsCollection.Aggregate(ctx, mongo.Pipeline{matchStage, categoriesStage, tagsStage})
 
