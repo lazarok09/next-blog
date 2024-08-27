@@ -58,6 +58,9 @@ func All(w http.ResponseWriter, r *http.Request) {
 
 	database, ctx, disconnectOnDefer, cancel := database.Connect()
 	defer disconnectOnDefer()
+	searchTerm, _ := odm.GetStringFromQuery("search", r)
+	limit, _ := odm.GetNumberFromQuery("limit", r)
+	offset, _ := odm.GetNumberFromQuery("offset", r)
 
 	postsCollection := database.Collection("posts")
 	indexModel := mongo.IndexModel{
@@ -71,10 +74,6 @@ func All(w http.ResponseWriter, r *http.Request) {
 
 	var results []posts.Post
 
-	searchTerm, _ := odm.GetStringFromQuery("search", r)
-	limit, _ := odm.GetNumberFromQuery("limit", r)
-	offset, _ := odm.GetNumberFromQuery("offset", r)
-
 	ops := options.Find()
 
 	if limit >= 0 {
@@ -85,16 +84,24 @@ func All(w http.ResponseWriter, r *http.Request) {
 	if offset >= 0 {
 		ops.SetSkip(offset)
 	}
-	filter := bson.D{}
 
-	if len(searchTerm) >= 1 {
-		filter = bson.D{{"$text", bson.D{{"$search", searchTerm}}}}
+	pipeline := mongo.Pipeline{}
+
+	if len(searchTerm) > 1 {
+		matchStage := bson.D{{"$match", bson.D{{"$text", bson.D{{"$search", searchTerm}, {"$caseSensitive", false}}}}}}
+		pipeline = append(pipeline, matchStage)
 	}
 
-	cursor, err := postsCollection.Find(ctx, filter, ops)
+	categoriesStage := bson.D{{"$lookup", bson.D{{"from", "categories"}, {"localField", "categories"}, {"foreignField", "_id"}, {"as", "categories"}}}}
+	tagsStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "tags"}}}}
+
+	pipeline = append(pipeline, categoriesStage)
+	pipeline = append(pipeline, tagsStage)
+
+	cursor, err := postsCollection.Aggregate(ctx, pipeline)
 
 	if err != nil {
-		w.Write([]byte("An error occured when try to find one result"))
+		w.Write([]byte(err.Error()))
 		return
 	}
 
