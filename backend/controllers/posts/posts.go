@@ -63,7 +63,7 @@ func All(w http.ResponseWriter, r *http.Request) {
 
 	postsCollection := database.Collection("posts")
 	indexModel := mongo.IndexModel{
-		Keys: bson.D{{"title", "text"}},
+		Keys: bson.D{{Key: "title", Value: "text"}},
 	}
 
 	if _, err := postsCollection.Indexes().CreateOne(ctx, indexModel); err != nil {
@@ -76,22 +76,26 @@ func All(w http.ResponseWriter, r *http.Request) {
 	pipeline := mongo.Pipeline{}
 
 	if offset >= 1 {
-		skipStage := bson.D{{"$skip", offset}}
+		skipStage := bson.D{{Key: "$skip", Value: offset}}
 		pipeline = append(pipeline, skipStage)
 	}
 	if limit >= 1 {
-		limitStage := bson.D{{"$limit", limit}}
+		limitStage := bson.D{{Key: "$limit", Value: limit}}
 		pipeline = append(pipeline, limitStage)
 
 	}
 
-	if len(searchTerm) > 1 {
-		matchStage := bson.D{{"$match", bson.D{{"$text", bson.D{{"$search", searchTerm}, {"$caseSensitive", false}}}}}}
+	if len(searchTerm) >= 1 {
+		// transform key value
+		matchStage := bson.D{{Key: "$match", Value: bson.D{{Key: "$text", Value: bson.D{{Key: "$search", Value: searchTerm}, {Key: "$caseSensitive", Value: false}}}}}}
+		// verify the code below to use the correct bson.D strucut using key value
+
 		pipeline = append(pipeline, matchStage)
 	}
 
-	categoriesStage := bson.D{{"$lookup", bson.D{{"from", "categories"}, {"localField", "categories"}, {"foreignField", "_id"}, {"as", "categories"}}}}
-	tagsStage := bson.D{{"$lookup", bson.D{{"from", "tags"}, {"localField", "tags"}, {"foreignField", "_id"}, {"as", "tags"}}}}
+	categoriesStage := bson.D{{Key: "$lookup", Value: bson.D{{Key: "from", Value: "categories"}, {Key: "localField", Value: "categories"}, {Key: "foreignField", Value: "_id"}, {Key: "as", Value: "categories"}}}}
+
+	tagsStage := bson.D{{Key: "$lookup", Value: bson.D{{Key: "from", Value: "tags"}, {Key: "localField", Value: "tags"}, {Key: "foreignField", Value: "_id"}, {Key: "as", Value: "tags"}}}}
 
 	pipeline = append(pipeline, categoriesStage)
 	pipeline = append(pipeline, tagsStage)
