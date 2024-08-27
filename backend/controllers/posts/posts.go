@@ -11,7 +11,6 @@ import (
 	"github.com/lazarok09/go-blog/odm"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
-	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 // Promise.all([callbacks, callbacks]) - ctx global
@@ -74,18 +73,17 @@ func All(w http.ResponseWriter, r *http.Request) {
 
 	var results []posts.Post
 
-	ops := options.Find()
-
-	if limit >= 0 {
-		ops.SetLimit(limit)
-
-	}
-
-	if offset >= 0 {
-		ops.SetSkip(offset)
-	}
-
 	pipeline := mongo.Pipeline{}
+
+	if offset >= 1 {
+		skipStage := bson.D{{"$skip", offset}}
+		pipeline = append(pipeline, skipStage)
+	}
+	if limit >= 1 {
+		limitStage := bson.D{{"$limit", limit}}
+		pipeline = append(pipeline, limitStage)
+
+	}
 
 	if len(searchTerm) > 1 {
 		matchStage := bson.D{{"$match", bson.D{{"$text", bson.D{{"$search", searchTerm}, {"$caseSensitive", false}}}}}}
