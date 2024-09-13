@@ -39,7 +39,7 @@ I've been followed the [conventinal commits](https://www.conventionalcommits.org
 
 | Back-End                                       | Description                                                                              |
 | ---------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| [Golang](https://go.dev/doc/)                  | Simple and efficient, how to now fall in love with Golang?                               |
+| [Golang](https://go.dev/doc/)                  | Simple and efficient                                                                     |
 | [MongoDB](https://www.mongodb.com/cloud/atlas) | One of the best no-sql databases available                                               |
 | [Cloudnary](https://cloudinary.com/)           | A service that provide to us the CDN application to save our images                      |
 
