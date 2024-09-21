@@ -73,8 +73,10 @@ func InitRoutes() {
 
 		upload_file.Handler(w, r)
 	})
+	var finalHostAndPort = fmt.Sprintf("%s:%s", config.HOST, config.PORT)
 	srv := &http.Server{
-		Addr: config.SERVER_URL,
+		Addr: finalHostAndPort,
+
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
@@ -82,6 +84,6 @@ func InitRoutes() {
 		Handler:      r, // Pass our instance of gorilla/mux in.
 	}
 
-	fmt.Printf("Listen server at %s", config.SERVER_URL)
+	fmt.Printf("Listen server at port %s", config.PORT)
 	log.Fatal(srv.ListenAndServe())
 }
