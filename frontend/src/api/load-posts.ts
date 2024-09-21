@@ -43,7 +43,7 @@ export const loadPosts = async (
   settings.Logo = logoObj;
 
   // upload settings menu links
-
+  // @ts-expect-error im gonna fix this soon
   const linksSettings = settings.MenuLink.map((m) => m.Ref);
 
   const settingsMenuLinks = links.filter((link) => {
@@ -51,22 +51,25 @@ export const loadPosts = async (
       return true;
     }
   });
-
+  // @ts-expect-error im gonna fix this soon
   settings.MenuLink = settingsMenuLinks;
 
-  posts.forEach((post) => {
-    const authorId = post.Author as any;
+  if (posts?.length) {
+    posts?.forEach((post) => {
+      const authorId = post.Author as any;
 
-    post.Author = authors.find((author) => (author.ID = authorId));
-  });
+      post.Author = authors.find((author) => (author.ID = authorId));
+    });
 
-  posts.forEach((post) => {
-    const coverId: string = post.Cover as any;
+    posts?.forEach((post) => {
+      const coverId: string = post.Cover as any;
 
-    const newCover =
-      uploadedFiles.find((file) => file.ID === coverId) || uploadedFiles[0];
-    post.Cover = newCover;
-  });
+      const newCover =
+        uploadedFiles.find((file) => file.ID === coverId) || uploadedFiles[0];
+      post.Cover = newCover;
+    });
+  }
+
   return { posts: posts, setting: settings };
 };
 
