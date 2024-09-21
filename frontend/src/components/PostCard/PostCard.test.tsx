@@ -8,14 +8,14 @@ describe("<PostCard />", () => {
     renderTheme(<PostCard {...props} />);
 
     expect(
-      screen.getByRole("heading", { name: mock.title })
+      screen.getByRole("heading", { name: mock.Title })
     ).toBeInTheDocument();
-    expect(screen.getByRole("img", { name: mock.title })).toBeInTheDocument();
-    expect(screen.getByText(mock.excerpt)).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: mock.Title })).toBeInTheDocument();
+    expect(screen.getByText(mock.Excerpt)).toBeInTheDocument();
 
     expect(screen.getAllByRole("link")[0]).toHaveAttribute(
       "href",
-      `/post/${mock.slug}`
+      `/post/${mock.Slug}`
     );
   });
   it("should match snapshot", () => {
