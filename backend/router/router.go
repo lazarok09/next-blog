@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/gorilla/mux"
+	"github.com/lazarok09/go-blog/config"
 	"github.com/lazarok09/go-blog/controllers/authors"
 	"github.com/lazarok09/go-blog/controllers/categories"
 	"github.com/lazarok09/go-blog/controllers/components_menu_menu_links"
@@ -16,14 +17,16 @@ import (
 	"github.com/lazarok09/go-blog/controllers/upload_file"
 )
 
-const AllowedHost = "http://localhost:3000"
-
 func insertCors(w http.ResponseWriter) {
-	w.Header().Set("Access-Control-Allow-Origin", AllowedHost)
+	w.Header().Set("Access-Control-Allow-Origin", config.ALLOWED_HOST)
 }
 
 func InitRoutes() {
 	r := mux.NewRouter()
+
+	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Welcome Sir"))
+	})
 
 	r.HandleFunc("/posts/{slug}", func(w http.ResponseWriter, r *http.Request) {
 		insertCors(w)
@@ -71,7 +74,7 @@ func InitRoutes() {
 		upload_file.Handler(w, r)
 	})
 	srv := &http.Server{
-		Addr: "0.0.0.0:8080",
+		Addr: config.SERVER_URL,
 		// Good practice to set timeouts to avoid Slowloris attacks.
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
@@ -79,6 +82,6 @@ func InitRoutes() {
 		Handler:      r, // Pass our instance of gorilla/mux in.
 	}
 
-	fmt.Println("Listen server at port 8080")
+	fmt.Printf("Listen server at %s", config.SERVER_URL)
 	log.Fatal(srv.ListenAndServe())
 }
