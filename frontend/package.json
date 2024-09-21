@@ -15,8 +15,7 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "format": "prettier --write .",
-    "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build",
-    "prepare": "husky install"
+    "test-all": "yarn check-format && yarn check-lint && yarn check-types && yarn build"
   },
   "dependencies": {
     "@styled-icons/material-outlined": "^10.46.0",
@@ -24,7 +23,6 @@
     "eslint": ">=8.25.0",
     "graphql": "^16.6.0",
     "graphql-request": "^5.0.0",
-    "husky": "^8.0.1",
     "next": "12.3",
     "node": "^19.0.0",
     "prismjs": "^1.29.0",
