@@ -17,7 +17,6 @@ export const PostsTemplate = ({
   posts = [],
   variables,
 }: PostsTemplateProps) => {
-  console.log("🚀 ~ settings:", settings);
   const [statePosts, setStatePosts] = useState(posts);
   const [stateVariables, setStateVariables] = useState(variables);
   const [buttonDisabled, setButtonDisabled] = useState(false);
