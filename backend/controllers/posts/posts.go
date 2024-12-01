@@ -57,9 +57,6 @@ func All(w http.ResponseWriter, r *http.Request) {
 
 	database, ctx, disconnectOnDefer, cancel := database.Connect()
 	defer disconnectOnDefer()
-	searchTerm, _ := odm.GetStringFromQuery("search", r)
-	limit, _ := odm.GetNumberFromQuery("limit", r)
-	offset, _ := odm.GetNumberFromQuery("offset", r)
 
 	postsCollection := database.Collection("posts")
 	indexModel := mongo.IndexModel{
@@ -75,17 +72,17 @@ func All(w http.ResponseWriter, r *http.Request) {
 
 	pipeline := mongo.Pipeline{}
 
-	if offset >= 1 {
+	if offset, _ := odm.GetNumberFromQuery("offset", r); offset >= 1 {
 		skipStage := bson.D{{Key: "$skip", Value: offset}}
 		pipeline = append(pipeline, skipStage)
 	}
-	if limit >= 1 {
+
+	if limit, _ := odm.GetNumberFromQuery("limit", r); limit > 1 {
 		limitStage := bson.D{{Key: "$limit", Value: limit}}
 		pipeline = append(pipeline, limitStage)
-
 	}
 
-	if len(searchTerm) >= 1 {
+	if searchTerm, _ := odm.GetStringFromQuery("search", r); len(searchTerm) >= 1 {
 		// transform key value
 		matchStage := bson.D{{Key: "$match", Value: bson.D{{Key: "$text", Value: bson.D{{Key: "$search", Value: searchTerm}, {Key: "$caseSensitive", Value: false}}}}}}
 		// verify the code below to use the correct bson.D strucut using key value
